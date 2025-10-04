@@ -2,7 +2,7 @@
   --bs-body-color: black; /*text*/
   --bs-light-rgb: 214, 218, 255;
   --bs-light : #6b878f;
---bs-secondary : #008fb7; /*à mettre pareil rgb-#...*/
+  --bs-secondary : #008fb7; /*à mettre pareil rgb-#...*/
   --bs-secondary-rgb : 102, 102, 255;
   --couleur-colonnes: #f2effa08;
   --colonnes-margin: 52vh;
@@ -77,4 +77,25 @@ section{
   margin-top: var(--colonnes-margin);
   background-color: var(--couleur-colonnes);
 }
+
+
+@media (min-width: 1205px) {
+    .h1, h1 {
+      font-size: 3rem;
+    }
+}
+@media (max-width: 900px) {
+    .h1, h1 {
+      font-size: calc(1rem + 1vw);
+    }
+}
+@media (max-width: 550px) {
+    .h1, h1 {
+      font-size: calc(0.75rem + 0.75vw);
+    }
+}
+@media (max-width: 385px) {
+    .h1, h1 {
+      font-size: calc(0.65rem + 0.7vw);
+    }
 }
