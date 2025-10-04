@@ -1,0 +1,29 @@
+:root{
+  --bs-body-color: black; /*text*/
+  --bs-light-rgb: 214, 218, 255;
+  --bs-light : #6b878f;
+}
+body{
+  background-color: #f3f3f3;
+}
+.grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  /*grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw 12vw 12vw;*/
+  position: absolute;
+  top: 0px;
+  z-index: -10;
+}
+.column1{
+  border-right: 1px solid rgb(205, 205, 205);
+  height: 100vh;
+  z-index: -10;
+}
+body{
+  margin: 0px;
+}
+header{
+  display: flex;
+  justify-content: center;
+  margin-top: 15vh;
+}
