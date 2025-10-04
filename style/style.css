@@ -22,6 +22,9 @@ section{
   display: flex;
   justify-content: center;
 }
+button{
+  padding: 0.85rem;
+}
 .grid{
   display: grid;
   grid-template-columns: repeat(12, 1fr);
