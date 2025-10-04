@@ -2,28 +2,79 @@
   --bs-body-color: black; /*text*/
   --bs-light-rgb: 214, 218, 255;
   --bs-light : #6b878f;
+--bs-secondary : #008fb7; /*à mettre pareil rgb-#...*/
+  --bs-secondary-rgb : 102, 102, 255;
+  --couleur-colonnes: #f2effa08;
+  --colonnes-margin: 52vh;
 }
 body{
-  background-color: #f3f3f3;
-}
-.grid{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  /*grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw 12vw 12vw;*/
-  position: absolute;
-  top: 0px;
-  z-index: -10;
-}
-.column1{
-  border-right: 1px solid rgb(205, 205, 205);
-  height: 100vh;
-  z-index: -10;
-}
-body{
+  background-color: #f4f2f2;
+  font-family: 'Poppings', sans-serif;
   margin: 0px;
 }
 header{
   display: flex;
   justify-content: center;
   margin-top: 15vh;
+  margin-bottom: 15vh;
+}
+section{
+  display: flex;
+  justify-content: center;
+}
+.grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+  /*grid-template-columns: 12vw 12vw 12vw 12vw 12vw 12vw 12vw 12vw;*/
+  position: absolute;
+  top: 0px;
+  z-index: -10;
+}
+.column--right{
+  border-right: 1px solid rgb(205, 205, 205);
+  height: 100vh;
+  z-index: -10;
+  background-color: var(--couleur-colonnes);
+}
+.column--off{ /*pas besoin finalement...?*/
+  height: 100vh;
+  z-index: -10;
+}
+.column__low{
+  border-right: 1px solid rgb(205, 205, 205);
+  height: 100vh;
+  z-index: -10;
+  margin-top: var(--colonnes-margin);
+  background-color: var(--couleur-colonnes);
+}
+.column--both{
+  border-right: 1px solid rgb(205, 205, 205);
+  border-left: 1px solid rgb(205, 205, 205);
+  height: 100vh;
+  z-index: -10;
+  background-color: var(--couleur-colonnes);
+}
+.column--both-low{
+  border-right: 1px solid rgb(205, 205, 205);
+  border-left: 1px solid rgb(205, 205, 205);
+  height: 100vh;
+  z-index: -10;
+  margin-top: var(--colonnes-margin);
+  background-color: var(--couleur-colonnes);
+  }
+.column--right-low{
+  border-right: 1px solid rgb(205, 205, 205);
+  height: 100vh;
+  z-index: -10;
+  margin-top: var(--colonnes-margin);
+  background-color: var(--couleur-colonnes);
+}
+.column--left-low{
+  border-left: 1px solid rgb(205, 205, 205);
+  height: 100vh;
+  z-index: -10;
+  margin-top: var(--colonnes-margin);
+  background-color: var(--couleur-colonnes);
+}
 }
