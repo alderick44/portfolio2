@@ -10,25 +10,26 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     </head>
     <body>
-        <main>
-                <div class="grid w-100">
-                    <div class=""></div>
-                    <div class="column--both"></div>
-                    <div class=""></div>
-                    <div id="" class="column--both-low"></div>
-                    <div id="" class=""></div>
-                    <div id="" class="column--left-low"></div>
-                    <div id="" class="column--right-low"></div>
-                    <div id="" class=""></div>
-                    <div class="column--both-low"></div>
-                    <div class=""></div>
-                    <div class="column--both"></div>
-                    <div class="column1"></div>
-                </div>
+        <div class="grid w-100">
+            <div class=""></div>
+            <div class="column--both"></div>
+            <div class=""></div>
+            <div id="" class="column--both-low"></div>
+            <div id="" class=""></div>
+            <div id="" class="column--left-low"></div>
+            <div id="" class="column--right-low"></div>
+            <div id="" class=""></div>
+            <div class="column--both-low"></div>
+            <div class=""></div>
+            <div class="column--both"></div>
+            <div class="column1"></div>
+        </div>
+        <main class="container">
+
 
                 <!-- <header class="d-flex justify-content-center">
                 </header> -->
-                <section class="d-flex flex-column align-items-center">
+                <section class="d-flex flex-column align-items-center pb-5">
                     <div class="mt-1 w-75 d-flex justify-content-evenly align-items-center flex-column">
                         <h1 class="m-5">Aldérick Gauthier</h2>
                         <div class="d-flex mb-5 me-4">
@@ -38,30 +39,76 @@
                             </div>
                             <h2 class="">Web émergent</h2>
                         </div>
-                        <div class="pb-5">
-                            <p>Interface soignée et objectif simple : je construis des sites qui convertissent.</p>
+                        <div class="">
+                            <p>Interface soignée et <span class="fw-bold">objectif simple</span>. Je design et construis des sites qui convertissent.</p>
                         </div>
                     </div>
-                    <div class="w-50 px-5">
-                        <div class="row mb-5 justify-content-between">
-                            <button class="col-2 btn btn-primary">Design (UX/UI)</button>
-                            <button class="col-2 btn btn-primary">JS</button>
-                            <button class="col-2 btn btn-primary">Github</button>
-                            <button class="col-2 btn btn-primary">Wordpress</button>
+                </section>
+
+                <div class="d-flex justify-content-center">
+                    <div class="d-flex pb-5 justify-content-start w-75 gap-3">
+                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#recruteur" aria-expanded="false" aria-controls="recruteur">
+                            Je suis recruteur</button>
+                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#entrepreneur" aria-expanded="false" aria-controls="entrepreneur">
+                            Je suis entrepreneur</button>
+                    </div>
+                    <div class="d-flex pb-5 justify-content-start w-75">
+
+                    </div>
+                </div>
+                <section class="collapse w-100" id="recruteur">
+                    <div class="w-100 d-flex justify-content-center align-items-center flex-column">
+                        <div class="text-start">
+                            <p class="mb-5">Objectif : code propre et maintenable. Je suis ouvert au mentorat, aux collaborations avec des agences/studios, et aux mandats ponctuels — et je suis preneur de retours.</p>
                         </div>
-                        <div class="row mb-5 justify-content-between">
-                            <button class="col-2 btn btn-primary">Bootstrap</button>
-                            <button class="col-2 btn btn-primary">PHP</button>
+                        <div class="w-100">
+                            <div class="row mb-5 justify-content-between">
+                                <button class="col-2 btn btn-primary">Design (UX/UI)</button>
+                                <button class="col-2 btn btn-primary">JS</button>
+                                <button class="col-2 btn btn-primary">Github</button>
+                                <button class="col-2 btn btn-primary">Wordpress</button>
+                            </div>
+                            <div class="row mb-5 justify-content-between">
+                                <button class="col-2 btn btn-primary">Bootstrap</button>
+                                <button class="col-2 btn btn-primary">PHP</button>
+                            </div>
+                            <div class="row g-4 pt-5 justify-content-between text-center">
+                                <button class="col-3 btn btn-secondary">Design (UX/UI)</button>
+                                <button class="col-3 btn btn-secondary">Responsive Design</button>
+                            </div>
                         </div>
-                        <div class="row g-4 pt-5 justify-content-between text-center">
-                            <button class="col-3 btn btn-secondary">Design (UX/UI)</button>
-                            <button class="col-3 btn btn-secondary">Responsive Design</button>
+                    </div>
+                </section>
+                <section class="collapse w-100" id="entrepreneur">
+                    <div class="w-100 d-flex justify-content-center align-items-center flex-column">
+                        <div class="text-start">
+                            <p class="mb-5">Objectif : code propre et maintenable. Je suis ouvert au mentorat, aux collaborations avec des agences/studios, et aux mandats ponctuels — et je suis preneur de retours.</p>
+                        </div>
+                        <div class="w-100">
+                            <div class="row mb-5 justify-content-between">
+                                <button class="col-2 btn btn-primary">offres</button>
+                                <button class="col-2 btn btn-primary">étapes</button>
+                                <button class="col-2 btn btn-primary">délais</button>
+                                <button class="col-2 btn btn-primary">budget indicatif</button>
+                            </div>
+                            <div class="row mb-5 justify-content-between">
+                                <button class="col-2 btn btn-primary">Bootstrap</button>
+                                <button class="col-2 btn btn-primary">PHP</button>
+                            </div>
+                            <div class="row g-4 pt-5 justify-content-between text-center">
+                                <button class="col-3 btn btn-secondary">Design (UX/UI)</button>
+                                <button class="col-3 btn btn-secondary">Responsive Design</button>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 <section>
-                    
+                    <div class="w-100 d-flex justify-content-center align-items-center flex-column py-5 my-5 border-top border-5">
+                        <h2>Plus sur moi</h2>
+                        <p>Entrepreneur autodidacte et étudiant, j’ai toujours la tête dans des projets, je sais m’adapter, apprendre, résoudre des problèmes et me motiver<span class="fw-bold"> de manière autonome </span> pour réaliser mes objectifs. Je développe actuellement mes compétences par la formation et recherche des mandats pour approfondir mes compétences techniques (HTML/CSS, JavaScript, UI/UX), tout en continuant mes projets entrepreneuriaux.</p>
+                        <img src="https://placehold.co/128x128" alt="Portrait d'Aldérick Gauthier" class="rounded-circle mt-5 z-1 position-absolute end-0 me-5">
+                    </div>
                 </section>
 
                 <div class="d-flex justify-content-center align-items-center p-5 m-5">
@@ -72,7 +119,6 @@
                 </nav>
                 </div>
         </main>
-
         <footer>
         </footer>
     </body>
