@@ -1,17 +1,37 @@
 :root{
-  --bs-body-color: black; /*text*/
+  --bs-body-color: rgb(252, 239, 239); /*text*/
   --bs-light-rgb: 214, 218, 255;
-  --bs-light : #6b878f;
+  --bs-light : #1c0f4b;
   --bs-secondary : #008fb7; /*à mettre pareil rgb-#...*/
   --bs-secondary-rgb : 102, 102, 255;
-  --couleur-colonnes: #f2effa08;
+  --couleur-colonnes: #f2effa0e;
+  --couleur-colonnes-border: rgba(27, 27, 27, 0.151);
   --colonnes-margin: 52vh;
 }
 body{
-  background-color: #f4f2f2;
-  font-family: 'Poppings', sans-serif;
-  margin: 0px;
+  background-color: var(--bs-light);
 }
+/* body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(700px 700px at 20% 30%,
+      rgba(255,255,255,0.28),
+      rgba(255,255,255,0) 60%),
+    radial-gradient(500px 500px at 80% 70%,
+      rgba(102,102,255,0.10),
+      rgba(102,102,255,0) 65%);
+
+  filter: blur(12px);
+  animation: spotlight-global 14s ease-in-out infinite alternate;
+} */
+/* @keyframes spotlight-global {
+  0% { transform: translate3d(-6%, -4%, 0);}
+  20% { transform: translate3d(-6%, -30%, 0);}
+} */
 header{
   display: flex;
   justify-content: center;
@@ -45,36 +65,36 @@ button{
   z-index: -10;
 }
 .column__low{
-  border-right: 1px solid rgb(205, 205, 205);
+  border-right: 1px solid var(--couleur-colonnes-border);
   height: 100vh;
   z-index: -10;
   margin-top: var(--colonnes-margin);
   background-color: var(--couleur-colonnes);
 }
 .column--both{
-  border-right: 1px solid rgb(205, 205, 205);
-  border-left: 1px solid rgb(205, 205, 205);
+  border-right: 1px solid var(--couleur-colonnes-border);
+  border-left: 1px solid var(--couleur-colonnes-border);
   height: 100vh;
   z-index: -10;
   background-color: var(--couleur-colonnes);
 }
 .column--both-low{
-  border-right: 1px solid rgb(205, 205, 205);
-  border-left: 1px solid rgb(205, 205, 205);
+  border-right: 1px solid var(--couleur-colonnes-border);
+  border-left: 1px solid var(--couleur-colonnes-border);
   height: 100vh;
   z-index: -10;
   margin-top: var(--colonnes-margin);
   background-color: var(--couleur-colonnes);
   }
 .column--right-low{
-  border-right: 1px solid rgb(205, 205, 205);
+  border-right: 1px solid var(--couleur-colonnes-border);
   height: 100vh;
   z-index: -10;
   margin-top: var(--colonnes-margin);
   background-color: var(--couleur-colonnes);
 }
 .column--left-low{
-  border-left: 1px solid rgb(205, 205, 205);
+  border-left: 1px solid var(--couleur-colonnes-border);
   height: 100vh;
   z-index: -10;
   margin-top: var(--colonnes-margin);
