@@ -80,6 +80,9 @@ button{
   margin-top: var(--colonnes-margin);
   background-color: var(--couleur-colonnes);
 }
+.profile-picture-zone{
+  transition: transform 0.5s ease;
+}
 .rotator{
   position: relative;
   display: inline-block;
@@ -104,7 +107,6 @@ button{
   50% { opacity: 0; transform: translatey(-12px);}
   100% { opacity: 0; transform: translatey(-12px);}
 }
-
 @media (min-width: 1205px) {
     .h1, h1 {
       font-size: 3rem;
