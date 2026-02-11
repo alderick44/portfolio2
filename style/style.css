@@ -80,7 +80,30 @@ button{
   margin-top: var(--colonnes-margin);
   background-color: var(--couleur-colonnes);
 }
+.rotator{
+  position: relative;
+  display: inline-block;
+  width: 25ch;
+}
+.rotator .word{
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transform: translatey(12px);
+  animation: rotateWord 6s infinite;
+  will-change: transform, opacity;
+}
+.rotator .word-2{
+  animation-delay: 3s;
+}
 
+@keyframes rotateWord {
+  0% { opacity: 0; transform: translatey(12px);}
+  10% { opacity: 1; transform: translatey(0px);}
+  40% { opacity: 1; transform: translatey(0px);}
+  50% { opacity: 0; transform: translatey(-12px);}
+  100% { opacity: 0; transform: translatey(-12px);}
+}
 
 @media (min-width: 1205px) {
     .h1, h1 {
