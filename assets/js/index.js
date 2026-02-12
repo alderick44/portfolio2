@@ -24,3 +24,24 @@ window.addEventListener('scroll', () => {
 
   document.body.style.setProperty('--bw', bw);
 });
+
+
+
+
+const sw = document.getElementById("audienceSwitch");
+const btns = sw.querySelectorAll(".pill-switch__btn");
+
+function setAudience(target){
+  sw.dataset.state = target;
+  btns.forEach(b=>{
+    const active = b.dataset.target === target;
+    b.classList.toggle("is-active", active);
+    b.setAttribute("aria-selected", String(active));
+  });
+
+  document.getElementById("recruteur").classList.toggle("show", target === "recruteur");
+  document.getElementById("entrepreneur").classList.toggle("show", target === "entrepreneur");
+}
+
+btns.forEach(b => b.addEventListener("click", () => setAudience(b.dataset.target)));
+setAudience("recruteur");
