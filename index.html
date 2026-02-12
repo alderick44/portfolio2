@@ -30,18 +30,18 @@
 
                 <!-- <header class="d-flex justify-content-center">
                 </header> -->
-                <section class="d-flex flex-column align-items-center py-5 mt-5">
+                <section class="d-flex flex-column align-items-center hero">
                     <div class="mt-1 w-75 d-flex justify-content-evenly align-items-center flex-column">
-                        <h1 class="m-5">Aldérick Gauthier</h2>
+                        <h1 class="m-5">Aldérick Gauthier</h1>
                         <div class="d-flex mb-5 me-4">
                             <div class="rotator">
                                 <h2 class="word word-1 text-center w-100 ps-4">Designer</h2>
                                 <h2 class="word word-2 text-center w-100">Développeur</h2>
                             </div>
-                            <h2 class="">Web émergent</h2>
+                            <h2>Web émergent</h2>
                         </div>
-                        <div class="">
-                            <p>Interface soignée et <span class="fw-bold">objectif simple</span>. Je design et construis des sites qui convertissent.</p>
+                        <div>
+                            <p class="fs-5">Interface soignée et <span class="fw-bold">objectif simple</span>. Je design et construis des sites qui convertissent.</p>
                         </div>
                     </div>
                 </section>
@@ -189,7 +189,13 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/Gradient.js"></script>
      <script>
-        var gradient = new Gradient();
+        var gradient = new Gradient({
+            amplitude: 100,
+            height: 500,
+            scaleX: 1.2,
+            scaleY: 1.7,
+            static: false
+        });
         gradient.initGradient('#gradient-canvas');
     </script>
 </html>

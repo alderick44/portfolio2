@@ -306,7 +306,7 @@ function normalizeColor(hexCode) {
   //Gradient object
   class Gradient {
     constructor(...t) {
-        e(this, "el", void 0), e(this, "cssVarRetries", 0), e(this, "maxCssVarRetries", 200), e(this, "angle", 0), e(this, "isLoadedClass", !1), e(this, "isScrolling", !1), /*e(this, "isStatic", o.disableAmbientAnimations()),*/ e(this, "scrollingTimeout", void 0), e(this, "scrollingRefreshDelay", 200), e(this, "isIntersecting", !1), e(this, "shaderFiles", void 0), e(this, "vertexShader", void 0), e(this, "sectionColors", void 0), e(this, "computedCanvasStyle", void 0), e(this, "conf", void 0), e(this, "uniforms", void 0), e(this, "t", 1253106), e(this, "last", 0), e(this, "width", void 0), e(this, "minWidth", 1111), e(this, "height", 600), e(this, "xSegCount", void 0), e(this, "ySegCount", void 0), e(this, "mesh", void 0), e(this, "material", void 0), e(this, "geometry", void 0), e(this, "minigl", void 0), e(this, "scrollObserver", void 0), e(this, "amp", 320), e(this, "seed", 5), e(this, "freqX", 14e-5), e(this, "freqY", 29e-5), e(this, "freqDelta", 1e-5), e(this, "activeColors", [1, 1, 1, 1]), e(this, "isMetaKey", !1), e(this, "isGradientLegendVisible", !1), e(this, "isMouseDown", !1), e(this, "handleScroll", () => {
+        e(this, "el", void 0), e(this, "cssVarRetries", 0), e(this, "maxCssVarRetries", 200), e(this, "angle", 0), e(this, "isLoadedClass", !1), e(this, "isScrolling", !1), e(this, "isStatic", !1), e(this, "scrollingTimeout", void 0), e(this, "scrollingRefreshDelay", 200), e(this, "isIntersecting", !1), e(this, "shaderFiles", void 0), e(this, "vertexShader", void 0), e(this, "sectionColors", void 0), e(this, "computedCanvasStyle", void 0), e(this, "conf", void 0), e(this, "uniforms", void 0), e(this, "t", 1253106), e(this, "last", 0), e(this, "width", void 0), e(this, "minWidth", 1111), e(this, "height", 600), e(this, "xSegCount", void 0), e(this, "ySegCount", void 0), e(this, "mesh", void 0), e(this, "material", void 0), e(this, "geometry", void 0), e(this, "minigl", void 0), e(this, "scrollObserver", void 0), e(this, "amp", 10), e(this, "seed", 5), e(this, "baseFreqX", 14e-5), e(this, "baseFreqY", 29e-5), e(this, "scaleX", 1), e(this, "scaleY", 1), e(this, "freqX", 14e-5), e(this, "freqY", 29e-5), e(this, "freqDelta", 1e-5), e(this, "activeColors", [1, 1, 1, 1]), e(this, "isMetaKey", !1), e(this, "isGradientLegendVisible", !1), e(this, "isMouseDown", !1), e(this, "handleScroll", () => {
             clearTimeout(this.scrollingTimeout), this.scrollingTimeout = setTimeout(this.handleScrollEnd, this.scrollingRefreshDelay), this.isGradientLegendVisible && this.hideGradientLegend(), this.conf.playing && (this.isScrolling = !0, this.pause())
         }), e(this, "handleScrollEnd", () => {
             this.isScrolling = !1, this.isIntersecting && this.play()
@@ -346,11 +346,20 @@ function normalizeColor(hexCode) {
                     to = this.paletteTo[i + 1];
                 from && to && layer && layer.value && layer.value.color && (layer.value.color.value = blend(from, to))
             }), this.minigl && this.minigl.render()
-        }), e(this,"initGradient", (selector) => {
+        }), e(this,"initGradient", (selector, options = {}) => {
+          this.applyOptions(options);
           this.el = document.querySelector(selector);
           this.connect();
           return this;
-        }), this.paletteScrollRange = 1800, this.paletteFrom = void 0, this.paletteTo = void 0, this.prefersReducedMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        }), this.paletteScrollRange = 1800, this.paletteFrom = void 0, this.paletteTo = void 0, this.prefersReducedMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches), this.applyOptions("object" == typeof t[0] && t[0] ? t[0] : {})
+    }
+    applyOptions(options = {}) {
+        if (!options || "object" != typeof options) return;
+        const toNum = (value, fallback) => {
+            const parsed = Number(value);
+            return Number.isFinite(parsed) ? parsed : fallback
+        };
+        this.amp = toNum(void 0 !== options.amplitude ? options.amplitude : options.amp, this.amp), this.height = toNum(options.height, this.height), this.seed = toNum(options.seed, this.seed), this.scaleX = Math.max(.01, toNum(options.scaleX, this.scaleX)), this.scaleY = Math.max(.01, toNum(options.scaleY, this.scaleY)), this.freqX = this.baseFreqX * this.scaleX, this.freqY = this.baseFreqY * this.scaleY, this.paletteScrollRange = Math.max(1, toNum(options.paletteScrollRange, this.paletteScrollRange)), "boolean" == typeof options.static && (this.isStatic = options.static)
     }
     async connect() {
         this.shaderFiles = {
@@ -427,7 +436,7 @@ function normalizeColor(hexCode) {
                         value: -.5
                     }),
                     noiseFreq: new this.minigl.Uniform({
-                        value: [3, 4],
+                        value: [1, 1],
                         type: "vec2"
                     }),
                     noiseAmp: new this.minigl.Uniform({
