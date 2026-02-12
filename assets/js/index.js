@@ -12,3 +12,15 @@ profilePictureZone.addEventListener('mousemove', (event) => {
   setProfileOffset(dx * amp, dy * amp);
 });
 profilePictureZone.addEventListener('mouseleave', () => setProfileOffset(0, 0));
+
+
+
+const range = 800; // en pixels (plus petit = plus rapide)
+
+window.addEventListener('scroll', () => {
+  const progress = window.scrollY / range;
+  const clamped = Math.min(1, Math.max(0, progress));
+  const bw = 1 - clamped; // 1 en haut, 0 après "range" px
+
+  document.body.style.setProperty('--bw', bw);
+});
