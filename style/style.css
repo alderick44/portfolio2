@@ -13,6 +13,14 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  --gradient-from-color-1: #ececec;
+  --gradient-from-color-2: #000000;
+  --gradient-from-color-3: #000000;
+  --gradient-from-color-4: #000000;
+  --gradient-to-color-1: #045786;
+  --gradient-to-color-2: #1c0f4b;
+  --gradient-to-color-3: #09044b;
+  --gradient-to-color-4: #4539e6;
   --gradient-color-1: #045786;
   --gradient-color-2: #1c0f4b;
   --gradient-color-3: #09044b;
@@ -50,7 +58,7 @@
   background-color: rgb(0, 0, 0);
   opacity: var(--bw, 1);
 } */
-body::after{
+/* body::after{
   content: "";
   position: fixed;
   inset: 0;
@@ -58,7 +66,7 @@ body::after{
   z-index: -1;
   background: rgba(0,0,0,0.85);
   opacity: var(--bw, 1);
-}
+} */
 @keyframes spotlight-global {
   0% { transform: translate3d(0, 0%, 0);}
   20% { transform: translate3d(0, -30%, 0);}
