@@ -24,6 +24,7 @@
             <div class="column--both"></div>
             <div class="column1"></div>
         </div>
+        <canvas id="gradient-canvas"></canvas>
         <main class="container">
 
 
@@ -186,4 +187,9 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/Gradient.js"></script>
+     <script>
+        var gradient = new Gradient();
+        gradient.initGradient('#gradient-canvas');
+    </script>
 </html>
