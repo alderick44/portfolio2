@@ -27,21 +27,39 @@ window.addEventListener('scroll', () => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const sw = document.getElementById("audienceSwitch");
+  if (!sw) return;
 
-const sw = document.getElementById("audienceSwitch");
-const btns = sw.querySelectorAll(".pill-switch__btn");
+  const btns = [...sw.querySelectorAll(".pill-switch__btn")];
 
-function setAudience(target){
-  sw.dataset.state = target;
-  btns.forEach(b=>{
-    const active = b.dataset.target === target;
-    b.classList.toggle("is-active", active);
-    b.setAttribute("aria-selected", String(active));
+  function setState(target, { scroll = true } = {}) {
+    sw.dataset.state = target;
+
+    btns.forEach((b) => {
+      const on = b.dataset.target === target;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+    });
+
+    document.getElementById("recruteur")?.classList.toggle("show", target === "recruteur");
+    document.getElementById("entrepreneur")?.classList.toggle("show", target === "entrepreneur");
+
+    if (scroll) {
+      document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function toggle() {
+    const current = sw.dataset.state || "recruteur";
+    setState(current === "recruteur" ? "entrepreneur" : "recruteur");
+  }
+
+  sw.addEventListener("click", (e) => {
+    e.preventDefault();
+    toggle();
   });
 
-  document.getElementById("recruteur").classList.toggle("show", target === "recruteur");
-  document.getElementById("entrepreneur").classList.toggle("show", target === "entrepreneur");
-}
-
-btns.forEach(b => b.addEventListener("click", () => setAudience(b.dataset.target)));
-setAudience("recruteur");
+  // état initial SANS scroll au refresh
+  setState("recruteur", { scroll: false });
+});

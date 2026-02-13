@@ -220,6 +220,21 @@ button{
   transform: translateX(100%);
 }
 
+.pill-switch-wrap{
+  position: sticky;
+  top: 12px;        /* ajuste si tu veux plus/moins d'espace */
+  z-index: 2000;
+}
+
+.pill-switch-wrap::before{
+  position:absolute;
+  inset:-12px 0;    /* zone de fond quand c’est collé */
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  z-index:-1;
+  border-radius: 999px;
+}
+
 @keyframes rotateWord {
   0% { opacity: 0; transform: translatey(12px);}
   10% { opacity: 1; transform: translatey(0px);}

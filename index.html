@@ -48,23 +48,18 @@
                     </div>
                 </section>
 
-                <div class="d-flex justify-content-center pt-5 mt-5">
-                    <!-- <div class="d-flex justify-content-center w-75 gap-3">
-                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#recruteur" aria-expanded="false" aria-controls="recruteur">
-                            Je suis recruteur</button>
-                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#entrepreneur" aria-expanded="false" aria-controls="entrepreneur">
-                            Je suis entrepreneur</button>
-                    </div> -->
-                <div class="pill-switch m-4" id="audienceSwitch" role="tablist" aria-label="Type de profil">
-                    <button class="pill-switch__btn is-active" data-target="recruteur" role="tab" aria-selected="true">
-                        Collaborer
-                    </button>
-                    <button class="pill-switch__btn" data-target="entrepreneur" role="tab" aria-selected="false">
-                        Créer un site
-                    </button>
-                    <span class="pill-switch__thumb" aria-hidden="true"></span>
-                </div>
-
+                <div class="d-flex justify-content-center pill-switch-wrap mb-4" id="pillWrap">
+                    <div class="pill-switch-wrap-inner">
+                        <div class="pill-switch" id="audienceSwitch" role="tablist" aria-label="Type de profil">
+                            <button class="pill-switch__btn is-active" data-target="recruteur" role="tab" aria-selected="true">
+                                Collaborer
+                            </button>
+                            <button class="pill-switch__btn" data-target="entrepreneur" role="tab" aria-selected="false">
+                                Créer un site
+                            </button>
+                            <span class="pill-switch__thumb" aria-hidden="true"></span>
+                        </div>
+                    </div>
                 </div>
                 <section class="collapse w-100" id="recruteur">
                     <div class="w-100 d-flex justify-content-center align-items-center flex-column">
@@ -103,20 +98,23 @@
 
                 <div class="w-100">
                     <div class="steps border rounded-4 overflow-hidden">
-                    <div class="step p-4 border-bottom">
-                        <h3 class="h5 mb-2">1) Plan du site</h3>
-                        <p class="mb-0">On clarifie l’objectif, le public cible, le message et les sections essentielles. Résultat : une structure claire et un contenu à préparer.</p>
-                    </div>
+                        <div class="step p-4 border-bottom">
+                            <h3 class="h5 mb-2">1) Plan du site</h3>
+                            <p class="mb-0">On clarifie l’objectif, le public cible, le message et les sections essentielles. Résultat : une structure claire et un contenu à préparer.</p>
+                        </div>
 
-                    <div class="step p-4 border-bottom">
-                        <h3 class="h5 mb-2">2) Design</h3>
-                        <p class="mb-0">Je propose une mise en page et un style cohérents. On ajuste jusqu’à ce que ce soit clair, agréable et convaincant.</p>
-                    </div>
+                        <div class="step p-4 border-bottom">
+                            <h3 class="h5 mb-2">2) Design</h3>
+                            <p class="mb-0">Je propose une mise en page et un style cohérents. On ajuste jusqu’à ce que ce soit clair, agréable et convaincant.</p>
+                        </div>
 
-                    <div class="step p-4">
-                        <h3 class="h5 mb-2">3) Développement + mise en ligne</h3>
-                        <p class="mb-0">Je construis le site pour qu’il soit fluide sur mobile et ordinateur, puis je le mets en ligne. Objectif : un site rapide, stable et facile à faire évoluer.</p>
+                        <div class="step p-4">
+                            <h3 class="h5 mb-2">3) Développement + mise en ligne</h3>
+                            <p class="mb-0">Je construis le site pour qu’il soit fluide sur mobile et ordinateur, puis je le mets en ligne. Objectif : un site rapide, stable et facile à faire évoluer.</p>
+                        </div>
                     </div>
+                    <div class="d-flex justify-content-center mt-5 pt-5">
+                        <a href="#contact" class="btn btn-primary">Me contacter</a>
                     </div>
                 </div>
                 </section>
