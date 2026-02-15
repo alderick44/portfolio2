@@ -192,6 +192,11 @@ button{
   background: rgba(255,255,255,.12);
   border: 1px solid rgba(255,255,255,.2);
   backdrop-filter: blur(8px);
+  scale: 1.35;
+  transition: ease 0.22s;
+}
+.pill-switch-wrap-inner .is-compact{
+  scale: 0.85;
 }
 .pill-switch__btn{
   position: relative;

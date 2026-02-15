@@ -28,7 +28,7 @@ window.addEventListener('scroll', () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const sw = document.getElementById("audienceSwitch");
+  const sw = document.getElementById("nav-switch");
   if (!sw) return;
 
   const btns = [...sw.querySelectorAll(".pill-switch__btn")];
