@@ -60,6 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle();
   });
 
-  // état initial SANS scroll au refresh
+
   setState("recruteur", { scroll: false });
 });

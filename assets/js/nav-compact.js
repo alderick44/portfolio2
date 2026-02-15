@@ -1,51 +1,37 @@
-(() => {
-  const navSwitch = document.getElementById("nav-switch");
-  if (!navSwitch) return;
+const navSwitch = document.getElementById("nav-switch");
+const sentinel = document.querySelector("#compact-sentinel");
 
-  const mobileQuery = window.matchMedia("(max-width: 767.98px)");
+let isCompact = false;
+let io = null;
+let lastY = window.scrollY;
 
-  const desktopThresholds = { compactAt: 500, expandAt: 400 };
-  const mobileThresholds = { compactAt: 240, expandAt: 220 };
-  let compactAt = desktopThresholds.compactAt;
-  let expandAt = desktopThresholds.expandAt;
-  let ticking = false;
-  let isCompact = false;     
+const HEADER_OFFSET = 90;
 
-  const updateThresholds = () => {
-    if (mobileQuery.matches) {
-      compactAt = mobileThresholds.compactAt;
-      expandAt = mobileThresholds.expandAt;
-      return;
-    }
-    compactAt = desktopThresholds.compactAt;
-    expandAt = desktopThresholds.expandAt;
-  };
+function setCompact(next) {
+  if (next === isCompact) return;
+  isCompact = next;
+  navSwitch.classList.toggle("is-compact", isCompact);
+}
 
-  const update = () => {
-    const scrollY = window.scrollY;
-    
-    if (scrollY > compactAt && !isCompact) {
-      isCompact = true;
-      navSwitch.classList.add("is-compact");
-    } else if (scrollY < expandAt && isCompact) {
-      isCompact = false;
-      navSwitch.classList.remove("is-compact");
-    }
-    
-    ticking = false;
-  };
+function setupObserver() {
+  if (!sentinel) return;
 
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(update);
-  };
+  if (io) io.disconnect();
 
-  updateThresholds();
-  update();
-  window.addEventListener("scroll", onScroll, { passive: true });
-  mobileQuery.addEventListener("change", () => {
-    updateThresholds();
-    update();
+  io = new IntersectionObserver(([entry]) => {
+    const y = window.scrollY;
+    const goingDown = y > lastY;
+    lastY = y;
+
+    if (goingDown && !entry.isIntersecting) setCompact(true);
+    if (!goingDown && entry.isIntersecting) setCompact(false);
+  }, {
+    rootMargin: `-${HEADER_OFFSET}px 0px 0px 0px`,
+    threshold: 0
   });
-})();
+
+  io.observe(sentinel);
+}
+
+setupObserver();
+window.addEventListener("resize", setupObserver);
