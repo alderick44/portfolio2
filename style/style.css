@@ -8,6 +8,24 @@
   --couleur-colonnes-border: rgba(27, 27, 27, 0.151);
   --colonnes-margin: 52vh;
 }
+.btn-primary{
+  /* background-color: #6d506ead;
+  border-color: #ff09ff59; */
+
+  /* background-color: #0f0827;
+  border-color: #193c86; */
+
+  background-color: #342d53;
+  border-color: #000000;
+
+}
+.btn:hover{
+  /* background-color: #0f0827;
+  border-color: #a306b8; */
+
+  background-color: #110e24;
+  border-color: #6a3a9b;
+}
 #gradient-canvas{
   position: fixed;
   inset: 0;
@@ -21,9 +39,11 @@
   --gradient-to-color-2: #1c0f4b;
   --gradient-to-color-3: #5751a0;
   --gradient-to-color-4: #191277; */
+
   --gradient-color-1: #193c86;
-  --gradient-color-2: #1c0f4b;
-  --gradient-color-3: #2d58a7;
+  /* --gradient-color-2: #1c0f4b; */
+  --gradient-color-2: #170935;
+  --gradient-color-3: #216d99;
   --gradient-color-4: #221b85;
   height: 100vh;
   width: 100vw;
@@ -189,7 +209,7 @@ button{
   height: var(--h);
   padding: 4px;
   border-radius: 999px;
-  background: rgba(255,255,255,.12);
+  background: rgba(45, 45, 45, 0.297);
   border: 1px solid rgba(255,255,255,.2);
   backdrop-filter: blur(8px);
   scale: 1.35;
@@ -209,7 +229,6 @@ button{
   border-radius: 999px;
   font-weight: 600;
 }
-.pill-switch__btn.is-active{ color:#0f1220; }
 .pill-switch__thumb{
   position: absolute;
   z-index: 1;
@@ -218,7 +237,7 @@ button{
   width: calc(50% - 4px);
   height: calc(var(--h) - 8px);
   border-radius: 999px;
-  background: #fff;
+  background: #6a3a9b;
   transition: transform .22s ease;
 }
 .pill-switch[data-state="entrepreneur"] .pill-switch__thumb{
