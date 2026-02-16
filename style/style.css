@@ -194,6 +194,7 @@ button{
 .rotator .word{
   position: absolute;
   left: 0;
+  top: 0;
   opacity: 0;
   transform: translatey(12px);
   animation: rotateWord 6s infinite;
