@@ -1,9 +1,11 @@
 :root{
-  --bs-body-color: rgb(252, 239, 239); /*text*/
-  --bs-light-rgb: 214, 218, 255;
-  --bs-light : #1c0f4b;
+  --bs-body-color: rgb(237, 225, 241); /*text*/
+
+  /* --bs-light : #1c0f4b; */
   --bs-secondary : #008fb7; /*à mettre pareil rgb-#...*/
   --bs-secondary-rgb : 102, 102, 255;
+  --bs-info: #b362ff;
+  --bs-info-rgb: 179, 98, 255;
   --couleur-colonnes: #f2effa0e;
   --couleur-colonnes-border: rgba(27, 27, 27, 0.151);
   --colonnes-margin: 52vh;
