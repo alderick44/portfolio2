@@ -1,17 +1,21 @@
-const profilePictureZone = document.getElementById('profile-picture-zone');
-function setProfileOffset(x, y) {
-  profilePictureZone.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-}
-profilePictureZone.addEventListener('mousemove', (event) => {
-  const rect = profilePictureZone.getBoundingClientRect();
-  const mx = event.clientX - rect.left;
-  const my = event.clientY - rect.top;
-  const dx = (mx - rect.width / 2) / (rect.width / 2);
-  const dy = (my - rect.height / 2) / (rect.height / 2);
-  const amp = -25;
-  setProfileOffset(dx * amp, dy * amp);
+document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
+  function setProfileOffset(x, y) {
+    zone.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  }
+
+
+  zone.addEventListener('mousemove', (event) => {
+    const rect = zone.getBoundingClientRect();
+    const mx = event.clientX - rect.left;
+    const my = event.clientY - rect.top;
+    const dx = (mx - rect.width / 2) / (rect.width / 2);
+    const dy = (my - rect.height / 2) / (rect.height / 2);
+    const amp = -25;
+    setProfileOffset(dx * amp, dy * amp);
+  });
+
+  zone.addEventListener('mouseleave', () => setProfileOffset(0, 0));
 });
-profilePictureZone.addEventListener('mouseleave', () => setProfileOffset(0, 0));
 
 
 
