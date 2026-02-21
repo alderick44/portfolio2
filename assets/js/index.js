@@ -18,6 +18,8 @@ document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
 });
 
 
+//-----------------------------------------------------------------------
+
 
 const range = 800; // en pixels (plus petit = plus rapide)
 
@@ -28,7 +30,6 @@ window.addEventListener('scroll', () => {
 
   document.body.style.setProperty('--bw', bw);
 });
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -69,11 +70,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const copyEmail = document.getElementById("copy-email");
-const feedback = document.getElementById("copy-feedback");
+//-----------------------------------------------------------------------
 
-copyEmail.addEventListener("click", async () => {
-  await navigator.clipboard.writeText(copyEmail.textContent.trim());
-  feedback.textContent = "Copié!";
-  setTimeout(() => (feedback.textContent = ""), 1200);
+const copyButtons = document.querySelectorAll("button[data-copy]");
+
+copyButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    const textToCopy = button.dataset.copy?.trim();
+    if (!textToCopy) return;
+
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+
+      // Cherche un feedback dans le même conteneur
+      const feedback = button.parentElement.querySelector("[data-copy-feedback]");
+      if (feedback) {
+        feedback.textContent = "Copié!";
+        clearTimeout(feedback._copyTimeout);
+
+        feedback._copyTimeout = setTimeout(() => {
+          feedback.textContent = "";
+        }, 1200);
+      }
+    } catch (error) {
+      console.error("Erreur copie :", error);
+    }
+  });
 });
