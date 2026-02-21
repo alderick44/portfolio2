@@ -67,3 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setState("recruteur", { scroll: false });
 });
+
+
+const copyEmail = document.getElementById("copy-email");
+const feedback = document.getElementById("copy-feedback");
+
+copyEmail.addEventListener("click", async () => {
+  await navigator.clipboard.writeText(copyEmail.textContent.trim());
+  feedback.textContent = "Copié!";
+  setTimeout(() => (feedback.textContent = ""), 1200);
+});
