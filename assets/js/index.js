@@ -80,28 +80,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //-----------------------------------------------------------------------
 
-const copyButtons = document.querySelectorAll("button[data-copy]");
+const actionButtons = document.querySelectorAll("button[data-copy], button[data-msg]");
 
-copyButtons.forEach((button) => {
+actionButtons.forEach((button) => {
   button.addEventListener("click", async () => {
     const textToCopy = button.dataset.copy?.trim();
-    if (!textToCopy) return;
+    const customMsg = button.dataset.msg?.trim();
 
+    if (!textToCopy && !customMsg) return;
+
+    const feedback = button.parentElement.querySelector("[data-feedback]");
+
+    function showFeedback(message) {
+      if (!feedback) return;
+      feedback.textContent = message;
+      clearTimeout(feedback._copyTimeout);
+
+      feedback._copyTimeout = setTimeout(() => {
+        feedback.textContent = "";
+      }, 2000);
+    }
+
+    // Priorité au message custom (pas de copie)
+    if (customMsg) {
+      showFeedback(customMsg);
+      return;
+    }
+
+    // Sinon: copie + message "Copié!"
     try {
       await navigator.clipboard.writeText(textToCopy);
-
-      // Cherche un feedback dans le même conteneur
-      const feedback = button.parentElement.querySelector("[data-copy-feedback]");
-      if (feedback) {
-        feedback.textContent = "Copié!";
-        clearTimeout(feedback._copyTimeout);
-
-        feedback._copyTimeout = setTimeout(() => {
-          feedback.textContent = "";
-        }, 1200);
-      }
+      showFeedback("Copié!");
     } catch (error) {
       console.error("Erreur copie :", error);
+      showFeedback("Impossible de copier");
     }
   });
 });
