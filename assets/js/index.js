@@ -31,14 +31,13 @@ document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
 
 const range = 800; // en pixels (plus petit = plus rapide)
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   const progress = window.scrollY / range;
   const clamped = Math.min(1, Math.max(0, progress));
   const bw = 1 - clamped; // 1 en haut, 0 après "range" px
 
-  document.body.style.setProperty('--bw', bw);
+  document.body.style.setProperty("--bw", bw);
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const sw = document.getElementById("nav-switch");
@@ -48,6 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setState(target, { scroll = true } = {}) {
     sw.dataset.state = target;
+
+    // Cache les contenus recruteur quand on est en mode "créer un site" (entrepreneur)
+    document.querySelectorAll("[data-recruteur]").forEach((el) => {
+      el.hidden = target === "entrepreneur";
+    });
 
     btns.forEach((b) => {
       const on = b.dataset.target === target;
@@ -59,7 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("entrepreneur")?.classList.toggle("show", target === "entrepreneur");
 
     if (scroll) {
-      document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById(target)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   }
 
@@ -72,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     toggle();
   });
-
 
   setState("recruteur", { scroll: false });
 });
