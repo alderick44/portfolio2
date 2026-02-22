@@ -1,3 +1,11 @@
+const sectionFormation = document.querySelector("#formation");
+
+sectionFormation.addEventListener("shown.bs.collapse", () => {
+  sectionFormation.scrollIntoView({ behavior: "smooth" });
+});
+
+
+
 document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
   function setProfileOffset(x, y) {
     zone.style.transform = `translate3d(${x}px, ${y}px, 0)`;
