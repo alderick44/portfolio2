@@ -1,36 +1,38 @@
 const navSwitch = document.getElementById("nav-switch");
-const sentinel = document.querySelector("#compact-sentinel");
+const sentinels = document.querySelectorAll("[data-sentinel]");
 
-let isCompact = false;
 let io = null;
-let lastY = window.scrollY;
-
-const HEADER_OFFSET = 90;
+const visibilityMap = new Map();
 
 function setCompact(next) {
-  if (next === isCompact) return;
-  isCompact = next;
-  navSwitch.classList.toggle("is-compact", isCompact);
+  if (!navSwitch) return;
+  navSwitch.classList.toggle("is-compact", next);
+}
+
+function recalcCompact() {
+  const anyVisible = [...visibilityMap.values()].some(Boolean);
+  setCompact(!anyVisible);
 }
 
 function setupObserver() {
-  if (!sentinel) return;
+  if (!sentinels.length) return;
 
   if (io) io.disconnect();
+  visibilityMap.clear();
 
-  io = new IntersectionObserver(([entry]) => {
-    const y = window.scrollY;
-    const goingDown = y > lastY;
-    lastY = y;
-
-    if (goingDown && !entry.isIntersecting) setCompact(true);
-    if (!goingDown && entry.isIntersecting) setCompact(false);
+  io = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      visibilityMap.set(entry.target, entry.isIntersecting);
+    }
+    recalcCompact();
   }, {
-    rootMargin: `-${HEADER_OFFSET}px 0px 0px 0px`,
     threshold: 0
   });
 
-  io.observe(sentinel);
+  sentinels.forEach((sentinel) => {
+    visibilityMap.set(sentinel, false);
+    io.observe(sentinel);
+  });
 }
 
 setupObserver();
