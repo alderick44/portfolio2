@@ -119,6 +119,8 @@ actionButtons.forEach((button) => {
       showFeedback("Copié!");
     } catch (error) {
       console.error("Erreur copie :", error);
+      feedback.classList.remove('text-sucess');
+      feedback.classList.add('text-danger')
       showFeedback("Impossible de copier");
     }
   });
