@@ -18,6 +18,7 @@ h3{
   background-color: #342d53;
   border-color: #000000;
   font-size: x-large;
+  min-width: 10em;
 }
 .btn:hover{
   background-color: #110e24;
@@ -157,25 +158,3 @@ button{
   50% { opacity: 0; transform: translatey(-12px);}
   100% { opacity: 0; transform: translatey(-12px);}
 }
-@media (min-width: 1205px) {
-    .h1, h1 {
-      font-size: 3rem;
-    }
-}
-@media (max-width: 900px) {
-    .h1, h1 {
-      font-size: calc(1rem + 1vw);
-    }
-}
-@media (max-width: 550px) {
-    .h1, h1 {
-      font-size: calc(0.75rem + 0.75vw);
-    }
-}
-@media (max-width: 385px) {
-    .h1, h1 {
-      font-size: calc(0.65rem + 0.7vw);
-    }
-}
-
-
