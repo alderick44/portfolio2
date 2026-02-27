@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle();
   });
 
-  setState("recruteur", { scroll: false });
+  setState("entrepreneur", { scroll: false }); /*Default switch state*/
 });
 
 

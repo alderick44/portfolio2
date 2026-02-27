@@ -9,28 +9,10 @@
         <link href="style/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
     </head>
     <body>
-        <div class="grid w-100">
-            <div class=""></div>
-            <div class="column--both"></div>
-            <div class=""></div>
-            <div id="" class="column--both-low"></div>
-            <div id="" class=""></div>
-            <div id="" class="column--left-low"></div>
-            <div id="" class="column--right-low"></div>
-            <div id="" class=""></div>
-            <div class="column--both-low"></div>
-            <div class=""></div>
-            <div class="column--both"></div>
-            <div class="column1"></div>
-        </div>
         <canvas id="gradient-canvas"></canvas>
         <main class="container">
-
-                <!-- <header class="d-flex justify-content-center">
-                </header> -->
                 <section class="d-flex flex-column align-items-center hero">
                     <div class="mt-1 w-75 d-flex justify-content-evenly align-items-center flex-column">
                         <h1 class="m-5 fs-1 w-100 text-center">Aldérick Gauthier</h1>
@@ -49,29 +31,27 @@
                 <div class="d-flex justify-content-center pill-switch-wrap mb-4">
                     <div class="pill-switch-wrap-inner">
                         <div class="pill-switch" id="nav-switch" role="tablist" aria-label="Type de profil">
-                            <button class="pill-switch__btn is-active" data-target="recruteur" role="tab" aria-selected="true">
-                                Collaborer
+                            <button class="pill-switch__btn" data-target="recruteur" role="tab" aria-selected="true">
+                                M'engager
                             </button>
-                            <button class="pill-switch__btn" data-target="entrepreneur" role="tab" aria-selected="false">
+                            <button class="pill-switch__btn is-active" data-target="entrepreneur" role="tab" aria-selected="false">
                                 Créer un site
                             </button>
                             <span class="pill-switch__thumb" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
-                <!-- <div data-sentinel aria-hidden="true" class=""></div> -->
                 <section data-sentinel class="collapse w-100" id="recruteur">
                     <div class="w-100 d-flex justify-content-center align-items-center flex-column pt-5 mt-5">
                         <div class="mb-5">
-                        <h2 class="py-4 fs-1">Collaborer</h2>
+                        <h2>M'engager</h2>
                         <h3>Développeur front-end junior</h3>
+                        <p class="fs-6 fst-italic">
+                            Opportunités junior, collaborations à long terme en agence, mandats ponctuels.
+                        </p>
                         <p>
                             Développeur front-end junior, avec un intérêt marqué pour le design d’interface et l’expérience utilisateur. J’aime me mettre à la place de l’utilisateur pour concevoir ou améliorer des interfaces claires, esthétiques et efficaces, au service d’objectifs concrets.
-                            <br>Je suis polyvalent sur un projet : <span class="fw-bold">HTML/CSS ○ JavaScript ○ Design UX/UI (Figma) ○ PHP ○ Wordpress</span>
-                        </p>
-                        <p>
-                            Je suis ouvert aux opportunités junior, au mentorat, aux collaborations avec des agences ou des studios, ainsi qu’aux mandats ponctuels.
-                        </p>
+                            <br>Je travaille  surtout avec ces technologies : <span class="fw-bold">HTML/CSS ○ JavaScript ○ Design UX/UI (Figma) ○ PHP </span>
                         </div>
                         <div class="w-100">
                             <div class="row mb-5 justify-content-between">
@@ -89,18 +69,18 @@
                                 <br>Cela dit, elle ne remplace pas une équipe d'expérience qui applique de bonnes pratiques, un cadre que je recherche justement pour évoluer en collaborant.
                             </p>
                             <p>
-                                Je peux aussi contribuer à la <span class="fw-bold">maintenance</span>, aux ajustements et aux améliorations continues d’un site, en m’adaptant rapidement aux outils et aux méthodes de l’équipe. Je souhaite progresser aux côtés de développeurs expérimentés afin de consolider de bonnes pratiques, et je suis preneur de retours pour continuer à m’améliorer.
+                                Je peux aussi contribuer à la <span class="fw-bold">maintenance</span>, aux ajustements et aux améliorations continues d’un site, en m’adaptant rapidement aux outils et aux méthodes de l’équipe. Je souhaite progresser aux côtés de développeurs expérimentés afin de consolider de bonnes pratiques et de bonnes méthodes de travail, et je suis preneur de retours pour continuer à m’améliorer.
                             </p>
                             <div class="row gap-4 pt-5 justify-content-center text-center pt-3">
                                 <a href="assets/pdf/CV-Aldérick-Gauthier.pdf" target="_blank class=" class="btn btn-primary col-3">Télécharger mon CV</a>
-                                <a href="mailto:info@agauthier.ca?subject=Prise%20de%20contact" class="btn btn-primary col-3 d-flex align-items-center justify-content-center">Me contacter</a>
+                                <a href="mailto:contact@agauthier.ca?subject=Prise%20de%20contact" class="btn btn-primary col-3 d-flex align-items-center justify-content-center">Me contacter</a>
                             </div>
                             <div class="d-flex align-items-center justify-content-center pt-4">
-                                <span class="user-select-all fs-4">info@agauthier.ca</span>
+                                <span class="user-select-all fs-4">contact@agauthier.ca</span>
                                 <button
                                     type="button"
                                     class="btn d-inline-flex align-items-center justify-content-center bg-transparent bi bi-copy mx-1"
-                                    data-copy="info@agauthier.ca"
+                                    data-copy="contact@agauthier.ca"
                                     aria-label="Copier l’adresse courriel"
                                     title="Copier"
                                 ></button>
@@ -112,7 +92,7 @@
                 <section data-sentinel class="collapse w-100" id="entrepreneur">
                     <div class="w-100 d-flex justify-content-center align-items-center flex-column pt-5 mt-5">
                         <div class="text-start">
-                            <h2 class="py-4 fs-1">Créer un site</h2>
+                            <h2>Créer un site</h2>
                             <h3>Design et développement de sites web</h3>
                             <p class="mb-5">
                                 Je conçois des sites web simples, rapides et faciles à faire évoluer. On clarifie l'objectif, je design et je développe un site adapté pour mobile qui inspire confiance. Je vous tiens informé à chaque étape.
@@ -135,12 +115,13 @@
                         </div>
                         <div class="my-4">
                             <h3>Ce que ça coûte</h3> 
-                            <p> Un site vitrine simple commence autour de 500 $. Pour un projet plus élaboré plus de pages, plus de contenu, fonctionnalités spécifiques, le budget se situe généralement entre 800 $ et 1 000 $.<br>Un premier versement est demandé au début du design, le solde à la mise en ligne.</p>                            
+                            <h4>Création</h4>
+                            <p>Un site vitrine simple commence à partir de 500$. Pour un projet plus élaboré (plus de pages, plus de contenu, fonctionnalités spécifiques), le budget se situe généralement entre 800$ et 1000$+, selon l’ampleur du projet.
+                            <br>Un premier versement est demandé au début du design, puis le solde est payable à la mise en ligne.</p>
+                            <h4>À prévoir</h4>
+                            <p>Les tarifs incluent la conception et la mise en ligne.
+                            Les frais de nom de domaine (15 à 30$/an), d’hébergement (10 à 30$/mois) et de maintenance (optionnelle, à partir de 30$/mois) ne sont pas inclus.<p>                        
                         </div>
-                        <!-- <div class="d-flex justify-content-center">
-                            <button data-msg="Bientôt disponible! Contactez-moi pour en discuter." class="btn btn-secondary w-25 mx-1">Obtenir un prix</button>
-                            <span data-feedback class="small text-warning fs-6 fw-bold"></span>
-                        </div> -->
                         <div class="my-4">
                             <h3>Ce que vous aurez avec moi</h3>
                             <p>
@@ -151,14 +132,14 @@
                             </p>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a href="mailto:info@agauthier.ca?subject=Prise%20de%20contact" class="btn btn-primary w-25">Me contacter</a>
+                            <a href="mailto:contact@agauthier.ca?subject=Prise%20de%20contact" class="btn btn-primary w-25">Me contacter</a>
                         </div>
                         <div class="d-flex align-items-center justify-content-center pt-4">
-                            <span class="user-select-all fs-4">info@agauthier.ca</span>
+                            <span class="user-select-all fs-4">contact@agauthier.ca</span>
                             <button
                                 type="button"
                                 class="btn d-inline-flex align-items-center justify-content-center bg-transparent bi bi-copy mx-1"
-                                data-copy="info@agauthier.ca"
+                                data-copy="contact@agauthier.ca"
                                 aria-label="Copier l’adresse courriel"
                                 title="Copier"
                             ></button>
@@ -166,11 +147,10 @@
                         </div>
                     </div>
                 </section>
-                <!-- <div data-sentinel aria-hidden="true" class=""></div> -->
                 <section class="my-5 d-flex flex-column">
                     <div class="w-100 d-flex justify-content-center align-items-center flex-column py-5 my-5 border-top border-1">
                         <div class="w-100 text-start position-relative">
-                            <h2 class="py-4 fs-1">Réalisations</h2>
+                            <h2>Réalisations</h2>
                             <div class="position-absolute profile-picture-zone end-0 top-0 z-3 p-5 pt-4 me-5">
                                 <img src="assets/icons/logo-spora.svg" alt="Logo de Sporacultus" class="img-fluid" width="128" height="128">
                             </div>
@@ -220,7 +200,7 @@
                 <section id="about" classcolumn>
                     <div class="pb-5">
                         <div class="w-100 d-flex justify-content-center align-items-center flex-column pt-5 mt-5 border-top border-1 position-relative">
-                            <h2 class="pb-4 fs-1">À propos</h2>
+                            <h2>À propos</h2>
                             <p>
                             Animé par les projets concrets, j’ai développé une forte autonomie dans mon travail et une bonne capacité d'adaptation en menant des projets entrepreneuriaux. J’aime apprendre et résoudre des problèmes.
                             </p>
@@ -284,14 +264,14 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center py-4">
-                            <a href="mailto:info@agauthier.ca?subject=Prise%20de%20contact" class="btn btn-primary w-25">Me contacter</a>
+                            <a href="mailto:contact@agauthier.ca?subject=Prise%20de%20contact" class="btn btn-primary w-25">Me contacter</a>
                         </div>
                         <div class="d-flex align-items-center justify-content-center pt-4">
-                            <span class="user-select-all fs-4">info@agauthier.ca</span>
+                            <span class="user-select-all fs-4">contact@agauthier.ca</span>
                             <button
                                 type="button"
                                 class="btn d-inline-flex align-items-center justify-content-center bg-transparent bi bi-copy mx-1"
-                                data-copy="info@agauthier.ca"
+                                data-copy="contact@agauthier.ca"
                                 aria-label="Copier l’adresse courriel"
                                 title="Copier"
                             ></button>
@@ -300,17 +280,7 @@
                     </div>
                 
                 </section>
-
-                <!-- <div class="d-flex justify-content-center align-items-center p-5 m-5">
-                <nav class="w-50 border rounded-4 bg-light d-flex justify-content-evenly p-4">
-                    <a href="index.html" class="text-decoration-none text-dark fs-4 fw-bold">Réalisations</a>
-                    <a href="index.html" class="text-decoration-none text-dark fs-4 fw-bold">À propos</a>
-                    <a href="index.html" class="text-decoration-none text-dark fs-4 fw-bold">Contact</a>
-                </nav>
-                </div> -->
         </main>
-        <footer>
-        </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="assets/js/Gradient.js"></script>
     <script src="assets/js/nav-compact.js"></script>
