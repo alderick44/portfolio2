@@ -81,6 +81,12 @@ button{
 .profile-picture-zone{
   transition: transform 0.65s ease;
 }
+.rounded-circle{
+  height: 600px;
+  width: 600px;
+  padding: 100px;
+  object-fit: cover;
+}
 .rotator{
   position: relative;
   display: inline-block;
@@ -106,6 +112,8 @@ button{
   align-items: center;
   height: var(--h);
   padding: 4px;
+  padding-left: 1px;
+  padding-right: 1px;
   border-radius: 999px;
   background: rgba(45, 45, 45, 0.297);
   border: 1px solid rgba(255,255,255,.2);
@@ -161,4 +169,11 @@ button{
   40% { opacity: 1; transform: translatey(0px);}
   50% { opacity: 0; transform: translatey(-12px);}
   100% { opacity: 0; transform: translatey(-12px);}
+}
+@media (max-width:767.67px){
+  .rounded-circle{
+  height: 300px;
+  width: 300px;
+  padding: 50px;
+}
 }
