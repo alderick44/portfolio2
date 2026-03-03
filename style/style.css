@@ -14,6 +14,9 @@ h2{
 h3{
   font-size: x-large;
 }
+h4{
+  font-size: large;
+}
 .btn-primary{
   /* background-color: #342d53; */
   background-color: #ae1469;
