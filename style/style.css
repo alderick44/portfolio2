@@ -14,14 +14,20 @@ h2{
 h3{
   font-size: x-large;
 }
+h4{
+  font-size: large;
+}
 .btn-primary{
-  background-color: #342d53;
-  border-color: #000000;
+  /* background-color: #342d53; */
+  background-color: #ae1469;
+  border-color: #ff00d0;
   font-size: x-large;
+  align-content: center;
   min-width: 10em;
+  max-width: 15em;
 }
 .btn:hover{
-  background-color: #110e24;
+  background-color: #614093;
   border-color: #6a3a9b;
 }
 #gradient-canvas{
@@ -78,6 +84,12 @@ button{
 .profile-picture-zone{
   transition: transform 0.65s ease;
 }
+.rounded-circle{
+  height: 600px;
+  width: 600px;
+  padding: 100px;
+  object-fit: cover;
+}
 .rotator{
   position: relative;
   display: inline-block;
@@ -103,6 +115,8 @@ button{
   align-items: center;
   height: var(--h);
   padding: 4px;
+  padding-left: 1px;
+  padding-right: 1px;
   border-radius: 999px;
   background: rgba(45, 45, 45, 0.297);
   border: 1px solid rgba(255,255,255,.2);
@@ -132,7 +146,8 @@ button{
   width: calc(50% - 4px);
   height: calc(var(--h) - 8px);
   border-radius: 999px;
-  background: #6a3a9b;
+  /* background: #6a3a9b; */
+  background: #ae1469;
   transition: transform .22s ease;
 }
 .pill-switch[data-state="entrepreneur"] .pill-switch__thumb{
@@ -157,4 +172,11 @@ button{
   40% { opacity: 1; transform: translatey(0px);}
   50% { opacity: 0; transform: translatey(-12px);}
   100% { opacity: 0; transform: translatey(-12px);}
+}
+@media (max-width:767.67px){
+  .rounded-circle{
+  height: 300px;
+  width: 300px;
+  padding: 50px;
+}
 }
