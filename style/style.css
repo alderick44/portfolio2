@@ -6,6 +6,7 @@
 body{
   font-family: sans-serif;
   font-size: larger;
+  background-color: #141622;
 }
 h2{
   font-size: xx-large;
@@ -19,8 +20,8 @@ h4{
 }
 .btn-primary{
   /* background-color: #342d53; */
-  background-color: #ae1469;
-  border-color: #ff00d0;
+  background-color: #5c2543;
+  border-color: #7c5a76;
   font-size: x-large;
   align-content: center;
   min-width: 10em;
@@ -31,7 +32,7 @@ h4{
   border-color: #6a3a9b;
 }
 #gradient-canvas{
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
@@ -49,8 +50,15 @@ h4{
   --gradient-color-2: #1c0a35;
   --gradient-color-3: #2e75a1;
   --gradient-color-4: #2a256f;
-  height: 100vh;
+  height: 220vh;
   width: 100vw;
+
+    mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 80%,
+    transparent 100%
+  );
 }
 .hero{
   height: 102vh;
@@ -147,7 +155,7 @@ button{
   height: calc(var(--h) - 8px);
   border-radius: 999px;
   /* background: #6a3a9b; */
-  background: #ae1469;
+  background: #940b56;
   transition: transform .22s ease;
 }
 .pill-switch[data-state="entrepreneur"] .pill-switch__thumb{

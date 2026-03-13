@@ -29,12 +29,12 @@ document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
 //-----------------------------------------------------------------------
 
 
-const range = 800; // en pixels (plus petit = plus rapide)
+const range = 800;
 
 window.addEventListener("scroll", () => {
   const progress = window.scrollY / range;
   const clamped = Math.min(1, Math.max(0, progress));
-  const bw = 1 - clamped; // 1 en haut, 0 après "range" px
+  const bw = 1 - clamped;
 
   document.body.style.setProperty("--bw", bw);
 });
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function setState(target, { scroll = true } = {}) {
     sw.dataset.state = target;
 
-    // Cache les contenus recruteur quand on est en mode "créer un site" (entrepreneur)
+
     document.querySelectorAll("[data-recruteur]").forEach((el) => {
       el.hidden = target === "entrepreneur";
     });
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle();
   });
 
-  setState("entrepreneur", { scroll: false }); /*Default switch state*/
+  setState("recruteur", { scroll: false }); /*Default switch state*/
 });
 
 
@@ -107,13 +107,11 @@ actionButtons.forEach((button) => {
       }, 2000);
     }
 
-    // Priorité au message custom (pas de copie)
     if (customMsg) {
       showFeedback(customMsg);
       return;
     }
 
-    // Sinon: copie + message "Copié!"
     try {
       await navigator.clipboard.writeText(textToCopy);
       showFeedback("Copié!");
