@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sw.dataset.state = target;
 
 
+
     document.querySelectorAll("[data-recruteur]").forEach((el) => {
       el.hidden = target === "entrepreneur";
     });
@@ -130,13 +131,11 @@ actionButtons.forEach((button) => {
       }, 2000);
     }
 
-    // Priorité au message custom (pas de copie)
     if (customMsg) {
       showFeedback(customMsg);
       return;
     }
 
-    // Sinon: copie + message "Copié!"
     try {
       await navigator.clipboard.writeText(textToCopy);
       showFeedback("Copié!");
