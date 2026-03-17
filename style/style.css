@@ -50,13 +50,13 @@ h4{
   --gradient-color-2: #1c0a35;
   --gradient-color-3: #2e75a1;
   --gradient-color-4: #2a256f;
-  height: 220vh;
+  height: 100%;
   width: 100vw;
 
     mask-image: linear-gradient(
     to bottom,
-    black 0%,
-    black 80%,
+    #1416227d 0%,
+    #1416228d 85%,
     transparent 100%
   );
 }
@@ -81,10 +81,6 @@ header{
   justify-content: center;
   margin-top: 15vh;
   margin-bottom: 15vh;
-}
-section{
-  display: flex;
-  justify-content: center;
 }
 button{
   padding: 0.85rem;
