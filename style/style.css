@@ -82,29 +82,11 @@ header{
   margin-top: 15vh;
   margin-bottom: 15vh;
 }
-section{
-  display: flex;
-  justify-content: center;
-}
-main > section:not(.hero){
-  padding-block: 6rem;
-}
 button{
   padding: 0.85rem;
 }
 .profile-picture-zone{
   transition: transform 0.65s ease;
-}
-.hero-intro-row{
-  margin-inline: 0;
-}
-.contact-email-row{
-  flex-wrap: wrap;
-  gap: 0.25rem 0.5rem;
-}
-.contact-email-row .user-select-all{
-  overflow-wrap: anywhere;
-  text-align: center;
 }
 .hero-portrait{
   width: min(600px, 100%);
@@ -229,6 +211,10 @@ button{
   }
   .pill-switch-wrap{
     padding-inline: 0.5rem;
+  }
+  .contact-email-row .user-select-all{
+    overflow-wrap: anywhere;
+    text-align: center;
   }
   .hero-portrait{
     width: min(300px, 100%);
