@@ -5,7 +5,6 @@ sectionFormation.addEventListener("shown.bs.collapse", () => {
 });
 
 
-
 document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
   function setProfileOffset(x, y) {
     zone.style.transform = `translate3d(${x}px, ${y}px, 0)`;
@@ -29,12 +28,12 @@ document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
 //-----------------------------------------------------------------------
 
 
-const range = 800; // en pixels (plus petit = plus rapide)
+const range = 800; 
 
 window.addEventListener("scroll", () => {
   const progress = window.scrollY / range;
   const clamped = Math.min(1, Math.max(0, progress));
-  const bw = 1 - clamped; // 1 en haut, 0 après "range" px
+  const bw = 1 - clamped;
 
   document.body.style.setProperty("--bw", bw);
 });
@@ -48,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function setState(target, { scroll = true } = {}) {
     sw.dataset.state = target;
 
-    // Cache les contenus recruteur quand on est en mode "créer un site" (entrepreneur)
+
     document.querySelectorAll("[data-recruteur]").forEach((el) => {
       el.hidden = target === "entrepreneur";
     });
@@ -80,9 +79,33 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle();
   });
 
-  setState("entrepreneur", { scroll: false }); /*Default switch state*/
+  setState("recruteur", { scroll: false }); /*Default switch state*/
 });
 
+//----------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+  const stickyCta = document.getElementById("realisations-sticky");
+  const realisations = document.getElementById("realisations-spora");
+
+  if (!stickyCta || !realisations) return;
+
+  function updateStickyVisibility() {
+    const rect = realisations.getBoundingClientRect(); //.getBoundingClientRect(), check MDN
+    const hasPassedRealisations = rect.bottom < 0;
+    stickyCta.classList.toggle("is-visible", hasPassedRealisations);
+  }
+
+  window.addEventListener("scroll", updateStickyVisibility, { passive: true });
+  window.addEventListener("resize", updateStickyVisibility);
+
+  stickyCta.addEventListener("click", (event) => {
+    event.preventDefault();
+    realisations.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  updateStickyVisibility();
+});
 
 //-----------------------------------------------------------------------
 
