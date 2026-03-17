@@ -82,6 +82,13 @@ header{
   margin-top: 15vh;
   margin-bottom: 15vh;
 }
+section{
+  display: flex;
+  justify-content: center;
+}
+main > section:not(.hero){
+  padding-block: 6rem;
+}
 button{
   padding: 0.85rem;
 }
@@ -170,6 +177,27 @@ button{
   z-index:-1;
   border-radius: 999px;
 }
+.realisations-sticky{
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 2100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px);
+  transition: opacity .22s ease, transform .22s ease;
+  min-width: clamp(14rem, 24vw, 20rem);
+  max-width: none;
+  font-size: 1.1rem;
+  padding: .85rem 1.35rem;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+.realisations-sticky.is-visible{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
 @keyframes rotateWord {
   0% { opacity: 0; transform: translatey(12px);}
   10% { opacity: 1; transform: translatey(0px);}
@@ -183,4 +211,14 @@ button{
   width: 300px;
   padding: 50px;
 }
+  .realisations-sticky{
+    left: 1rem;
+    right: 1rem;
+    min-width: 0;
+    text-align: center;
+    transform: translateY(10px);
+  }
+  .realisations-sticky.is-visible{
+    transform: translateY(0);
+  }
 }

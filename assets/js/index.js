@@ -5,7 +5,6 @@ sectionFormation.addEventListener("shown.bs.collapse", () => {
 });
 
 
-
 document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
   function setProfileOffset(x, y) {
     zone.style.transform = `translate3d(${x}px, ${y}px, 0)`;
@@ -29,7 +28,7 @@ document.querySelectorAll('.profile-picture-zone').forEach((zone) => {
 //-----------------------------------------------------------------------
 
 
-const range = 800;
+const range = 800; 
 
 window.addEventListener("scroll", () => {
   const progress = window.scrollY / range;
@@ -83,6 +82,30 @@ document.addEventListener("DOMContentLoaded", () => {
   setState("recruteur", { scroll: false }); /*Default switch state*/
 });
 
+//----------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+  const stickyCta = document.getElementById("realisations-sticky");
+  const realisations = document.getElementById("realisations-spora");
+
+  if (!stickyCta || !realisations) return;
+
+  function updateStickyVisibility() {
+    const rect = realisations.getBoundingClientRect(); //.getBoundingClientRect(), check MDN
+    const hasPassedRealisations = rect.bottom < 0;
+    stickyCta.classList.toggle("is-visible", hasPassedRealisations);
+  }
+
+  window.addEventListener("scroll", updateStickyVisibility, { passive: true });
+  window.addEventListener("resize", updateStickyVisibility);
+
+  stickyCta.addEventListener("click", (event) => {
+    event.preventDefault();
+    realisations.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  updateStickyVisibility();
+});
 
 //-----------------------------------------------------------------------
 
