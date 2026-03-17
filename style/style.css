@@ -51,7 +51,7 @@ h4{
   --gradient-color-3: #2e75a1;
   --gradient-color-4: #2a256f;
   height: 100%;
-  width: 100vw;
+  width: 100%;
 
     mask-image: linear-gradient(
     to bottom,
@@ -95,9 +95,22 @@ button{
 .profile-picture-zone{
   transition: transform 0.65s ease;
 }
-.rounded-circle{
-  height: 600px;
-  width: 600px;
+.hero-intro-row{
+  margin-inline: 0;
+}
+.contact-email-row{
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+}
+.contact-email-row .user-select-all{
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+.hero-portrait{
+  width: min(600px, 100%);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
   padding: 100px;
   object-fit: cover;
 }
@@ -206,11 +219,21 @@ button{
   100% { opacity: 0; transform: translatey(-12px);}
 }
 @media (max-width:767.67px){
-  .rounded-circle{
-  height: 300px;
-  width: 300px;
-  padding: 50px;
-}
+  .pill-switch{
+    scale: 1;
+    max-width: 100%;
+  }
+  .pill-switch__btn{
+    padding: 0 10px;
+    font-size: 0.8rem;
+  }
+  .pill-switch-wrap{
+    padding-inline: 0.5rem;
+  }
+  .hero-portrait{
+    width: min(300px, 100%);
+    padding: 50px;
+  }
   .realisations-sticky{
     left: 1rem;
     right: 1rem;
