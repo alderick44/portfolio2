@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const stickyCta = document.getElementById("realisations-sticky");
-  const realisations = document.getElementById("realisations-spora");
+  const realisations = document.getElementById("realisations");
 
   if (!stickyCta || !realisations) return;
 

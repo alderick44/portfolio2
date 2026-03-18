@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <section class="pb-5 d-flex flex-column" >
+                <section class="pb-5 d-flex flex-column" id="realisations" >
                     <div class="w-100 d-flex justify-content-center align-items-center flex-column py-5 border-top border-1">
                         <div class="w-100 text-start position-relative">
                             <h2 class="mb-4">Réalisations</h2>
@@ -118,7 +118,13 @@
                     </div>
                     <div class="py-5">
                         <h3 class="mb-3">Brasserie Wabasso</h3>
-                        <p class="mb-0">Refonte fictive du design, en attente d'autorisation pour afficher le projet</p>
+                        <p class="mb-3">Refonte fictive du design</p>
+                        <div>
+                            <div class="d-flex justify-content-start">
+                                <div id="wabasso-pdf" class="w-50 pdf-window rounded-3"></div>
+                            </div>
+                        <button id="wabasso-btn" class="btn btn-primary mt-3">Voir le design</button>
+                        </div>
                     </div>
                     <h3 class="mb-3">Verger Barry</h3>
                     <p class="mb-0">Refonte fictive du design, en attente d'autorisation pour afficher le projet</p>
@@ -361,6 +367,7 @@
         <script src="assets/js/Gradient.js"></script>
         <script src="assets/js/nav-compact.js"></script>
         <script src="assets/js/index.js"></script>
+        <script type="module" src="assets/js/pdf-viewer.js"></script>
         <script>
             var gradient = new Gradient({
                 amplitude: 100,

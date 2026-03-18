@@ -96,6 +96,7 @@ button{
   padding: 100px;
   object-fit: cover;
 }
+/*------------------------ */
 .rotator{
   position: relative;
   display: inline-block;
@@ -113,6 +114,7 @@ button{
 .rotator .word-2{
   animation-delay: 3s;
 }
+/*------------------------ */
 .pill-switch{
   --h: 44px;
   position: relative;
@@ -172,6 +174,7 @@ button{
   z-index:-1;
   border-radius: 999px;
 }
+/*------------------------ */
 .realisations-sticky{
   position: fixed;
   left: 50%;
