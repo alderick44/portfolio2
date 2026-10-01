@@ -35,7 +35,7 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link href="style/style.css?v=5" rel="stylesheet" />
+    <link href="style/style.css?v=7" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
@@ -180,6 +180,37 @@
                 mini-panier/panier), pensés pour convertir et faciliter la prise
                 de contact.
               </p>
+              <p class="mb-4">
+                La page d'accueil propose une animation interactive : on y
+                découvre les produits que je mets de l'avant en creusant la
+                terre, puis on peut les faire pousser.
+              </p>
+              <div class="cursor-label mb-4">
+                <div class="position-relative">
+                  <video
+                    class="rounded-4 img-fluid d-block w-100"
+                    src="assets/video/spora-demo.mp4"
+                    poster="assets/img/spora-demo-poster.jpg"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    aria-label="Démonstration de l'animation interactive de la page d'accueil de Sporacultus"
+                  ></video>
+                  <a
+                    href="https://sporacultus.ca/"
+                    target="_blank"
+                    rel="noopener"
+                    class="badge rounded-pill text-bg-dark text-decoration-none position-absolute bottom-0 end-0 m-3 fs-6"
+                    >sporacultus.ca ↗</a
+                  >
+                </div>
+                <span class="cursor-label__text"
+                  >Vrai site en production, animation codée en JavaScript
+                  natif</span
+                >
+              </div>
               <div class="row g-3 align-items-start justify-content-center">
                 <div class="col-12 col-sm-4">
                   <img
@@ -206,34 +237,6 @@
                   />
                 </div>
               </div>
-              <p class="mt-5 mb-4">
-                La page d'accueil propose une animation interactive : on y
-                découvre les produits que je mets de l'avant en creusant la
-                terre, puis on peut les faire pousser.
-              </p>
-              <div
-                class="position-relative mx-auto mb-4"
-                style="max-width: 640px"
-              >
-                <video
-                  class="rounded-4 img-fluid d-block w-100"
-                  src="assets/video/spora-demo.mp4"
-                  poster="assets/img/spora-demo-poster.jpg"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  aria-label="Démonstration de l'animation interactive de la page d'accueil de Sporacultus"
-                ></video>
-                <a
-                  href="https://sporacultus.ca/"
-                  target="_blank"
-                  rel="noopener"
-                  class="badge rounded-pill text-bg-dark text-decoration-none position-absolute bottom-0 end-0 m-3 fs-6"
-                  >sporacultus.ca ↗</a
-                >
-              </div>
               <div class="py-4">
                 <p data-recruteur hidden class="mb-4">
                   L'animation s'aligne avec les objectifs principaux du site :
@@ -250,11 +253,6 @@
                                     Ce projet me permet d’apprendre sur un cas réel avec WordPress, PHP et WooCommerce. J’y développe de meilleurs réflexes pour comprendre sur quels fichiers intervenir, comment WordPress assemble les pages et comment faire des ajustements sans nuire à la structure existante. Chaque problème rencontré m’aide à progresser vers un code plus propre et plus maintenable.
                                 </p> -->
                 <p class="mb-0">
-                  Ce projet m’a permis de développer ma capacité à concevoir une
-                  boutique réelle, avec une interface adaptée, une structure
-                  claire et une expérience utilisateur soignée.
-                </p>
-                <p class="mt-3 mb-0">
                   J’ai aussi pris en charge la mise en ligne : choix de
                   l’hébergement, configuration du nom de domaine (DNS) et
                   déploiement du site en production. Je me suis appuyé sur
@@ -273,46 +271,70 @@
             </div>
           </div>
           <div class="py-5 my-5">
-            <h3 class="mb-3">Brasserie Wabasso</h3>
-            <p class="mb-3">Refonte fictive du design</p>
-            <div>
-              <div class="d-flex justify-content-start">
-                <div id="wabasso-pdf" class="w-50 pdf-window rounded-3"></div>
+            <h3 class="mb-4">Brasserie Wabasso</h3>
+            <div class="row g-4 g-lg-5 align-items-start">
+              <div class="col-12 col-lg-7">
+                <!-- .cursor-label : l'étiquette suit le curseur au survol, et devient une légende sous le média au tactile -->
+                <div class="cursor-label">
+                  <div id="wabasso-pdf" class="pdf-window rounded-3"></div>
+                  <span class="cursor-label__text"
+                    >Design seulement, maquette faite dans Figma</span
+                  >
+                </div>
               </div>
-              <div class="d-flex justify-content-center">
-                <button id="wabasso-btn" class="btn btn-primary mt-3">
+              <div class="col-12 col-lg-5">
+                <p class="mb-4">
+                  Refonte fictive d'une page du site de la Brasserie Wabasso,
+                  conçue dans Figma dans un contexte scolaire.
+                </p>
+                <button id="wabasso-btn" class="btn btn-primary">
                   Voir le design
                 </button>
               </div>
             </div>
           </div>
-          <div class="py-5 my-5">
-            <h3 class="mb-3">Verger Barry</h3>
-            <p class="mb-0">Refonte fictive du design.</p>
-            <p>
-              Dans l’esprit d’une refonte réelle, j’ai cherché à conserver le
-              style et la palette de couleurs d’origine, tout en repensant la
-              disposition des informations et des sections afin d’offrir une
-              navigation plus fluide et une compréhension plus rapide du contenu
-              pertinent.
-            </p>
-            <img
-              src="/assets/img/vergerbarry-preview.png"
-              class="w-50 rounded-1"
-            />
-            <div class="d-flex flex-column align-items-center py-4">
-              <a
-                href="https://projet-synthese.netlify.app/"
-                target="_blank"
-                class="btn btn-primary"
-                >Voir la refonte <br />(version ordinateur)</a
-              >
-              <a
-                href="https://www.vergerbarry.com/"
-                target="_blank"
-                class="btn btn-primary my-4"
-                >Voir le site original</a
-              >
+          <div class="py-5">
+            <h3 class="mb-4">Verger Barry</h3>
+            <div class="row g-4 align-items-center">
+              <div class="col-12 col-sm-5 col-lg-4">
+                <div class="cursor-label">
+                  <img
+                    src="/assets/img/vergerbarry-preview.png"
+                    alt="Aperçu de la refonte du site du Verger Barry"
+                    class="w-100 rounded-1"
+                    loading="lazy"
+                  />
+                  <span class="cursor-label__text"
+                    >Projet scolaire, codé à la main en HTML, CSS et
+                    Bootstrap</span
+                  >
+                </div>
+              </div>
+              <div class="col-12 col-sm-7 col-lg-8">
+                <p class="mb-3">
+                  Dans l’esprit d’une refonte réelle, j’ai cherché à conserver
+                  le style et la palette de couleurs d’origine, tout en
+                  repensant la disposition des informations et des sections
+                  afin d’offrir une navigation plus fluide et une compréhension
+                  plus rapide du contenu pertinent.
+                </p>
+                <div class="d-flex flex-wrap column-gap-4 row-gap-2">
+                  <a
+                    href="https://projet-synthese.netlify.app/"
+                    target="_blank"
+                    rel="noopener"
+                    class="link-info"
+                    >Voir la refonte (version ordinateur)</a
+                  >
+                  <a
+                    href="https://www.vergerbarry.com/"
+                    target="_blank"
+                    rel="noopener"
+                    class="link-info"
+                    >Voir le site original</a
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -747,6 +769,7 @@
     <script src="assets/js/Gradient.js"></script>
     <script src="assets/js/pill-switch.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/cursor-label.js"></script>
     <script type="module" src="assets/js/pdf-viewer.js"></script>
     <script>
       var gradient = new Gradient({
