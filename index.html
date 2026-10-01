@@ -161,53 +161,67 @@
             </div>
             <div id="realisations-spora">
               <h3 class="mb-3">Sporacultus</h3>
-              <p class="w-75 mb-4">
+              <p class="mb-4">
                 Sporacultus est mon projet personnel de culture de champignons.
-                À l'origine, c'était un site vitrine réalisé dans un cadre
-                scolaire, je le fais évoluer en boutique WooCommerce sur mesure,
-                avec un design et une expérience utilisateur pensés pour
-                convertir et faciliter la prise de contact.
+                À l'origine un site vitrine, je le fais évoluer en boutique
+                WooCommerce sur mesure, avec un thème WordPress custom et des
+                gabarits personnalisés (catalogue, fiche produit,
+                mini-panier/panier), pensés pour convertir et faciliter la prise
+                de contact.
               </p>
-              <div
-                class="d-flex flex-column flex-sm-row justify-content-center gap-4 py-5"
-              >
-                <div>
+              <div class="row g-3 align-items-start justify-content-center">
+                <div class="col-12 col-sm-4">
                   <img
                     src="assets/img/spora-shop.png"
-                    alt="Aperçu du projet Sporacultus"
+                    alt="Page boutique de Sporacultus"
                     class="rounded-4 img-fluid"
+                    loading="lazy"
                   />
                 </div>
-                <div class="p-5 p-sm-0">
+                <div class="col-12 col-sm-4">
                   <img
                     src="assets/img/spora-shop-and-minicart.png"
-                    alt="Aperçu du projet Sporacultus"
+                    alt="Boutique Sporacultus avec mini-panier ouvert"
                     class="rounded-4 img-fluid"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="col-12 col-sm-4">
+                  <img
+                    src="assets/img/spora-header.png"
+                    alt="Header déployé de Sporacultus avec la navigation utilitaire"
+                    class="rounded-4 img-fluid"
+                    loading="lazy"
                   />
                 </div>
               </div>
-              <!-- <p class="mb-4">
-                                Côté technique, j’y développe un thème WordPress custom et je personnalise des gabarits WooCommerce (catalogue, fiche produit, mini-panier/panier), tout en améliorant progressivement la structure du code afin d’en renforcer la maintenabilité.
-                            </p> -->
-              <p class="mb-4">
-                L'image suivante montre le header déployé révélant la navigation
-                utilitaire quand on défile vers le haut :
+              <p class="mt-5 mb-4">
+                La page d'accueil propose une animation interactive : on y
+                découvre les produits en creusant la terre, et on peut observer
+                pousser les champignons que je vends.
               </p>
-              <div>
-                <img
-                  src="assets/img/spora-header.png"
-                  alt="Aperçu du projet Sporacultus"
-                  class="rounded-4 img-fluid w-75 d-none d-lg-block"
-                />
-              </div>
-              <div>
-                <img
-                  src="assets/img/spora-header.png"
-                  alt="Aperçu du projet Sporacultus"
-                  class="rounded-4 img-fluid w-100 d-lg-none"
-                />
+              <div class="mb-4">
+                <video
+                  class="rounded-4 img-fluid d-block mx-auto"
+                  style="max-width: 640px; width: 100%"
+                  src="assets/video/spora-demo.mp4"
+                  poster="assets/img/spora-demo-poster.jpg"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Démonstration de l'animation interactive de la page d'accueil de Sporacultus"
+                ></video>
               </div>
               <div class="py-4">
+                <p data-recruteur hidden class="mb-4">
+                  L'animation est codée en JavaScript natif dans un canvas,
+                  sans librairie. Un tutoriel guide le visiteur à ses premiers
+                  gestes, et le logo statique reste affiché si le canvas est
+                  indisponible ou si le visiteur préfère réduire les
+                  animations.
+                </p>
                 <!-- <p data-recruteur hidden class="mb-4">
                                     Ce projet me permet d’apprendre sur un cas réel avec WordPress, PHP et WooCommerce. J’y développe de meilleurs réflexes pour comprendre sur quels fichiers intervenir, comment WordPress assemble les pages et comment faire des ajustements sans nuire à la structure existante. Chaque problème rencontré m’aide à progresser vers un code plus propre et plus maintenable.
                                 </p> -->
@@ -222,7 +236,7 @@
                   href="https://sporacultus.ca/"
                   target="_blank"
                   class="btn btn-primary"
-                  >Voir le site Web</a
+                  >Essayer l'animation</a
                 >
               </div>
             </div>
@@ -669,6 +683,22 @@
         static: false,
       });
       gradient.initGradient("#gradient-canvas");
+
+      // Le navigateur peut libérer le contexte WebGL après une longue inactivité
+      const gradientCanvas = document.getElementById("gradient-canvas");
+      gradientCanvas.addEventListener("webglcontextlost", (e) =>
+        e.preventDefault(),
+      );
+      gradientCanvas.addEventListener("webglcontextrestored", () => {
+        gradient = new Gradient({
+          amplitude: 100,
+          height: 500,
+          scaleX: 1.2,
+          scaleY: 1.7,
+          static: false,
+        });
+        gradient.initGradient("#gradient-canvas");
+      });
     </script>
   </body>
 </html>
