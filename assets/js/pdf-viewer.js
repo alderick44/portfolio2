@@ -36,45 +36,22 @@ previewWrapper.appendChild(fade);
 container.appendChild(previewWrapper);
 // container.appendChild(btn);
 
-
-// --- Préchargement : on télécharge
-// le PDF ET on le dessine sur un canvas hors écran. Au clic, il ne reste qu'à l'afficher. ---
-let renderPromise = null;
-const startLoading = () => {
-  if (!renderPromise) {
-    renderPromise = (async () => {
-      const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
-      const page = await pdf.getPage(1);
-      const viewport = page.getViewport({ scale: 0.5 });
-
-      const fullCanvas = document.createElement("canvas");
-      fullCanvas.width = viewport.width;
-      fullCanvas.height = viewport.height;
-      fullCanvas.classList.add("d-block", "rounded-4", "mt-3");
-      fullCanvas.style.width = "100%";
-
-      await page.render({ canvasContext: fullCanvas.getContext("2d"), viewport }).promise;
-      return fullCanvas;
-    })();
-  }
-  return renderPromise;
-};
-
-// Dès que la page est chargée, on lance le tout quand le navigateur est inactif
-const whenIdle = () =>
-  "requestIdleCallback" in window
-    ? requestIdleCallback(startLoading, { timeout: 3000 })
-    : setTimeout(startLoading, 1000);
-
-if (document.readyState === "complete") whenIdle();
-else window.addEventListener("load", whenIdle, { once: true });
-
-// --- Au clic : spinner (si le rendu n'est pas fini) puis affichage du canvas ---
+// --- Au clic : spinner + render PDF complet ---
 btn.addEventListener("click", async () => {
   btn.disabled = true;
   btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Chargement...`;
 
-  const fullCanvas = await startLoading();
+  const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+  const page = await pdf.getPage(1);
+  const viewport = page.getViewport({ scale: 0.5 });
+
+  const fullCanvas = document.createElement("canvas");
+  fullCanvas.width = viewport.width;
+  fullCanvas.height = viewport.height;
+  fullCanvas.classList.add("d-block", "rounded-4", "mt-3");
+  fullCanvas.style.width = "100%";
+
+  await page.render({ canvasContext: fullCanvas.getContext("2d"), viewport }).promise;
 
   previewWrapper.remove();
   btn.remove();
