@@ -43,10 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setState(target, { scroll = true } = {}) {
     sw.dataset.state = target;
-
-    document.querySelectorAll("[data-recruteur]").forEach((el) => {
-      el.hidden = target === "entrepreneur";
-    });
+    siteMode.set(target);
 
     btns.forEach((b) => {
       const on = b.dataset.target === target;
@@ -89,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  setState("recruteur", { scroll: false }); /*Default switch state*/
+  setState(siteMode.get(), { scroll: false });
 });
 
 //----- Taille compacte selon les sections visibles -----
