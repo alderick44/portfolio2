@@ -1,5 +1,9 @@
 // Pilule de choix du profil (recruteur / entrepreneur)
 
+/* Mouvement réduit : les défilements se font sans animation */
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const scrollBehavior = () => (reducedMotion.matches ? "auto" : "smooth");
+
 //----- Mode, épinglage et indicateur -----
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,13 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
     hint?.classList.remove("is-visible");
   }
 
-  function showHint(target) {
+  /* delay : durée d'affichage en ms (le survol l'affiche tant que la souris reste dessus) */
+  function showHint(target, delay = 5000) {
     if (!hint) return;
     hint.textContent = hintText[target];
     hint.href = `#${target}`;
     hint.classList.add("is-visible");
     clearTimeout(hintTimeout);
-    hintTimeout = setTimeout(hideHint, 5000);
+    hintTimeout = setTimeout(hideHint, delay);
   }
 
   function setState(target, { scroll = true } = {}) {
@@ -77,13 +82,28 @@ document.addEventListener("DOMContentLoaded", () => {
     else showHint(btn.dataset.target);
   });
 
+  /* Au survol (souris seulement), le bouton annonce où mène l'option survolée.
+     Le délai laisse le temps d'aller jusqu'à l'indicateur sans qu'il disparaisse. */
+  btns.forEach((btn) => {
+    btn.addEventListener("pointerenter", (e) => {
+      if (e.pointerType === "mouse") showHint(btn.dataset.target, 60000);
+    });
+    btn.addEventListener("pointerleave", (e) => {
+      if (e.pointerType !== "mouse") return;
+      clearTimeout(hintTimeout);
+      hintTimeout = setTimeout(hideHint, 400);
+    });
+  });
+  hint?.addEventListener("pointerenter", () => clearTimeout(hintTimeout));
+  hint?.addEventListener("pointerleave", () => {
+    hintTimeout = setTimeout(hideHint, 400);
+  });
+
   hint?.addEventListener("click", (e) => {
     e.preventDefault();
     hideHint();
-    document.getElementById(sw.dataset.state)?.scrollIntoView({
-      behavior: scrollBehavior(),
-      block: "start",
-    });
+    /* L'indicateur peut annoncer l'option survolée, pas seulement le mode actif */
+    setState(hint.getAttribute("href").slice(1));
   });
 
   setState(siteMode.get(), { scroll: false });
