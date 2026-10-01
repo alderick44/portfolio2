@@ -38,50 +38,6 @@ window.addEventListener("scroll", () => {
   document.body.style.setProperty("--bw", bw);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sw = document.getElementById("nav-switch");
-  if (!sw) return;
-
-  const btns = [...sw.querySelectorAll(".pill-switch__btn")];
-
-  function setState(target, { scroll = true } = {}) {
-    sw.dataset.state = target;
-
-
-    document.querySelectorAll("[data-recruteur]").forEach((el) => {
-      el.hidden = target === "entrepreneur";
-    });
-
-    btns.forEach((b) => {
-      const on = b.dataset.target === target;
-      b.classList.toggle("is-active", on);
-      b.setAttribute("aria-selected", on ? "true" : "false");
-    });
-
-    document.getElementById("recruteur")?.classList.toggle("show", target === "recruteur");
-    document.getElementById("entrepreneur")?.classList.toggle("show", target === "entrepreneur");
-
-    if (scroll) {
-      document.getElementById(target)?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }
-
-  function toggle() {
-    const current = sw.dataset.state || "recruteur";
-    setState(current === "recruteur" ? "entrepreneur" : "recruteur");
-  }
-
-  sw.addEventListener("click", (e) => {
-    e.preventDefault();
-    toggle();
-  });
-
-  setState("recruteur", { scroll: false }); /*Default switch state*/
-});
-
 //----------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -90,10 +46,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!stickyCta || !realisations) return;
 
+  /* Le bouton ne sert qu'à ceux qui ont sauté les réalisations (raccourci de la pilule).
+     On les considère vues si la section Spora est restée 2 s à l'écran :
+     un défilement automatique qui passe par-dessus ne compte pas. */
+  const seenTarget = document.getElementById("realisations-spora") || realisations;
+  let hasSeenRealisations = false;
+  let seenTimeout;
+
+  const seenObserver = new IntersectionObserver(([entry]) => {
+    clearTimeout(seenTimeout);
+    if (!entry.isIntersecting) return;
+    seenTimeout = setTimeout(() => {
+      hasSeenRealisations = true;
+      seenObserver.disconnect();
+      updateStickyVisibility();
+    }, 2000);
+  });
+  seenObserver.observe(seenTarget);
+
   function updateStickyVisibility() {
     const rect = realisations.getBoundingClientRect(); //.getBoundingClientRect(), check MDN
     const hasPassedRealisations = rect.bottom < 0;
-    stickyCta.classList.toggle("is-visible", hasPassedRealisations);
+    stickyCta.classList.toggle(
+      "is-visible",
+      hasPassedRealisations && !hasSeenRealisations,
+    );
   }
 
   window.addEventListener("scroll", updateStickyVisibility, { passive: true });
