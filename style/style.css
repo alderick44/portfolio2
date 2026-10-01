@@ -126,6 +126,33 @@ button {
   animation-delay: 3s;
 }
 /*------------------------ */
+/* Texte à deux versions selon le mode (voir mode.js, data-mode sur <html>).
+   Les versions sont superposées dans la même cellule : la plus haute donne la hauteur,
+   donc la mise en page ne bouge pas quand le mode change. */
+.pour-swap {
+  display: grid;
+}
+.pour-swap > [data-pour] {
+  grid-area: 1 / 1;
+}
+/* Contenu affiché dans un seul mode (l'autre mode ne laisse aucune trace dans la page) */
+html[data-mode="recruteur"] [data-only="entrepreneur"],
+html[data-mode="entrepreneur"] [data-only="recruteur"] {
+  display: none !important; /* bat les .d-flex de Bootstrap */
+}
+/* Colonne pleine largeur, pour un bouton à width: 100% */
+.pour-swap--full {
+  grid-template-columns: minmax(0, 1fr);
+}
+/* .btn-primary a un max-width : centré dans la cellule au lieu de collé à gauche */
+.pour-swap > .btn {
+  justify-self: center;
+}
+html[data-mode="recruteur"] .pour-swap > [data-pour="entrepreneur"],
+html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
+  visibility: hidden;
+}
+/*------------------------ */
 .pill-switch-question {
   font-size: 1rem;
   opacity: 0.75;
