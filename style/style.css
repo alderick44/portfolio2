@@ -126,6 +126,15 @@ button {
   animation-delay: 3s;
 }
 /*------------------------ */
+.pill-switch-question {
+  font-size: 1rem;
+  opacity: 0.75;
+  margin-bottom: 1.25rem;
+}
+/* Garde la place de la pilule dans le hero quand elle est épinglée en haut */
+.pill-switch-anchor {
+  height: 44px;
+}
 .pill-switch {
   --h: 44px;
   position: relative;
@@ -173,9 +182,50 @@ button {
   transform: translateX(100%);
 }
 .pill-switch-wrap {
-  position: sticky;
-  top: 12px;
+  position: relative;
   z-index: 2000;
+  pointer-events: none;
+}
+.pill-switch-wrap .pill-switch {
+  pointer-events: auto;
+}
+.pill-switch-wrap-inner {
+  position: relative;
+}
+.pill-switch-hint {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  transform: translate(-50%, -6px);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(20, 22, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #dbe2ff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+.pill-switch-hint.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.pill-switch-hint:hover {
+  color: #fff;
+  border-color: #940b56;
+}
+.pill-switch-wrap.is-pinned {
+  position: fixed;
+  top: 12px;
+  left: 0;
+  right: 0;
 }
 .pill-switch-wrap::before {
   position: absolute;
