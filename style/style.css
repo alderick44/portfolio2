@@ -321,26 +321,48 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
 /*------------------------ */
 .realisations-sticky {
   position: fixed;
-  left: 50%;
-  bottom: 1.5rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
   z-index: 2100;
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, 10px);
+  transform: translateY(10px);
   transition:
     opacity 0.22s ease,
     transform 0.22s ease;
-  min-width: clamp(14rem, 24vw, 20rem);
+  min-width: 0;
   max-width: none;
-  font-size: 1.1rem;
-  padding: 0.85rem 1.35rem;
+  font-size: 0.95rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
   text-align: center;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  /* Clair sur fond sombre : le seul bouton de la page à trancher autant */
+  background-color: var(--bs-info);
+  border-color: var(--bs-info);
+  color: #141622;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+.realisations-sticky:hover,
+.realisations-sticky:focus-visible {
+  background-color: #e6b4f0;
+  border-color: #e6b4f0;
+  color: #141622;
 }
 .realisations-sticky.is-visible {
   opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%, 0);
+  transform: translateY(0);
+  /* Une seule pulsation à l'apparition, pas de boucle */
+  animation: stickyPulse 1.2s ease-out 0.3s 2;
+}
+@keyframes stickyPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(213, 142, 228, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 16px rgba(213, 142, 228, 0);
+  }
 }
 @keyframes rotateWord {
   0% {
@@ -385,13 +407,33 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
     padding: 50px;
   }
   .realisations-sticky {
-    left: 1rem;
-    right: 1rem;
-    min-width: 0;
-    text-align: center;
-    transform: translateY(10px);
+    right: 0.75rem;
+    bottom: 0.75rem;
+    font-size: 0.85rem;
+    padding: 0.45rem 0.85rem;
+  }
+}
+
+/* Mouvement réduit : plus d'animation décorative, le premier mot du rotateur reste affiché */
+@media (prefers-reduced-motion: reduce) {
+  .rotator .word {
+    animation: none;
+    transform: none;
+  }
+  .rotator .word-1 {
+    opacity: 1;
+  }
+  .rotator .word-2 {
+    display: none;
+  }
+  .profile-picture-zone,
+  .pill-switch__thumb,
+  .pill-switch-hint,
+  .realisations-sticky,
+  .cursor-label-bubble {
+    transition: none;
   }
   .realisations-sticky.is-visible {
-    transform: translateY(0);
+    animation: none;
   }
 }

@@ -1,7 +1,16 @@
+/* Mouvement réduit : la démo vidéo ne démarre pas toute seule, on la lance avec les commandes */
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll("video[autoplay]").forEach((v) => {
+    v.removeAttribute("autoplay");
+    v.pause();
+    v.controls = true;
+  });
+}
+
 const sectionFormation = document.querySelector("#formation");
 
 sectionFormation.addEventListener("shown.bs.collapse", () => {
-  sectionFormation.scrollIntoView({ behavior: "smooth" });
+  sectionFormation.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
 });
 
 
@@ -78,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   stickyCta.addEventListener("click", (event) => {
     event.preventDefault();
-    realisations.scrollIntoView({ behavior: "smooth", block: "start" });
+    realisations.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
   });
 
   updateStickyVisibility();

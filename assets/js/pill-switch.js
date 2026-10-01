@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (scroll) {
       document.getElementById(target)?.scrollIntoView({
-        behavior: "smooth",
+        behavior: scrollBehavior(),
         block: "start",
       });
     }
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     hideHint();
     document.getElementById(sw.dataset.state)?.scrollIntoView({
-      behavior: "smooth",
+      behavior: scrollBehavior(),
       block: "start",
     });
   });
