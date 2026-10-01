@@ -170,8 +170,6 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
   align-items: center;
   height: var(--h);
   padding: 4px;
-  padding-left: 1px;
-  padding-right: 1px;
   border-radius: 999px;
   background: rgba(45, 45, 45, 0.297);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -189,7 +187,11 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
   border: 0;
   background: transparent;
   color: #dbe2ff;
-  padding: 0 16px;
+  /* Espacement et taille ici seulement, jamais avec .px-1 / .fs-6 sur les boutons :
+     leur !important battait la règle mobile plus bas (le « R » touchait le bord du pouce). */
+  padding: 0 0.9rem;
+  font-size: 1rem;
+  white-space: nowrap;
   border-radius: 999px;
   font-weight: 600;
 }
@@ -198,7 +200,8 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
   z-index: 1;
   top: 4px;
   left: 4px;
-  width: calc(50% - 4px);
+  /* Moitié de l'espace intérieur : les deux colonnes de la grille sont égales */
+  width: calc((100% - 8px) / 2);
   height: calc(var(--h) - 8px);
   border-radius: 999px;
   /* background: #6a3a9b; */
@@ -392,7 +395,7 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
     max-width: 100%;
   }
   .pill-switch__btn {
-    padding: 0 10px;
+    padding: 0 0.6rem;
     font-size: 0.8rem;
   }
   .pill-switch-wrap {
