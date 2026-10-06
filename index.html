@@ -305,10 +305,23 @@
                 terre, puis on peut les faire pousser.
               </p>
               <div data-recruteur hidden class="mb-4">
-                <p class="mb-0">
+                <p class="mb-0 position-relative">
                   L'animation s'aligne avec les objectifs principaux du site :
                   éduquer les visiteurs sur la culture des champignons et faire
                   connaître mes produits pour mieux les vendre.
+                  <br />Elle n'affecte pas le chargement de la page d'accueil,
+                  qui obtient
+                  <!-- .hover-preview : l'image apparaît au survol, ou au toucher grâce à tabindex. Elle s'aligne sur le bord gauche du paragraphe (position-relative) pour ne jamais sortir de l'écran -->
+                  <strong class="hover-preview" tabindex="0"
+                    ><img
+                      class="hover-preview__img"
+                      src="assets/img/spora-lighthouse.png"
+                      alt="Résultats Lighthouse de la page d'accueil de sporacultus.ca, 98 en performance, 98 en accessibilité, 100 en bonnes pratiques, 100 en SEO"
+                      width="557"
+                      height="186"
+                      loading="lazy"
+                    />98 en performance sur Lighthouse en mode mobile</strong
+                  >. Elle se charge en morceaux, pendant qu'on l'utilise.
                   <br />Côté accessibilité, un logo statique remplace
                   l'animation si le visiteur a demandé de réduire les
                   animations.

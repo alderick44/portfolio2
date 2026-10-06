@@ -321,6 +321,34 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
     white-space: nowrap;
   }
 }
+/* Texte qui montre une image au survol ou au focus (.hover-preview) */
+.hover-preview {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+}
+/* Horizontalement : bord gauche du parent positionné (le paragraphe), pour rester dans l'écran.
+   Verticalement : la ligne du texte, puis remontée juste au-dessus avec le transform. */
+.hover-preview__img {
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  width: min(22rem, 100%);
+  height: auto;
+  transform: translateY(calc(-100% - 0.4rem));
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease;
+}
+.hover-preview:hover .hover-preview__img,
+.hover-preview:focus .hover-preview__img {
+  opacity: 1;
+  visibility: visible;
+}
 /*------------------------ */
 .realisations-sticky {
   position: fixed;
