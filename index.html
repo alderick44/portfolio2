@@ -78,7 +78,7 @@
               <!-- .pour-swap : une accroche par mode, voir style.css -->
               <div class="pour-swap fs-5 text-center">
                 <p data-pour="recruteur" class="mb-0">
-                  Développeur web junior, disponible rapidement à temps partiel.
+                  Développeur front-end junior, disponible pour mandats.
                 </p>
                 <p data-pour="entrepreneur" class="mb-0">
                   Votre site web, du design à la mise en ligne.
@@ -156,7 +156,7 @@
               <div class="pour-swap col-12 text-center mt-5">
                 <div data-pour="recruteur">
                   <p class="mb-3">
-                    Disponible rapidement, à temps partiel.<br />
+                    Disponible rapidement pour des mandats.<br />
                     Mon CV et mon code sont à portée de main.
                   </p>
                   <div
@@ -231,18 +231,19 @@
               <h3 class="mb-3">Sporacultus</h3>
               <div class="pour-swap fs-5 mb-4">
                 <p data-pour="recruteur" class="mb-0">
-                  Montre mon développement, avec un thème WordPress sur mesure
-                  et une boutique WooCommerce.
+                  Un site vitrine devenu boutique en ligne, fait avec un
+                  <strong>thème WordPress sur mesure</strong> et
+                  <strong>WooCommerce</strong>.
                 </p>
                 <p data-pour="entrepreneur" class="mb-0">
-                  Un site vitrine devenu boutique en ligne, pensé pour
-                  convertir et faciliter la prise de contact.
+                  Un site de présentation devenu boutique en ligne, pensé pour
+                  vendre et faciliter la prise de contact.
                 </p>
               </div>
               <!-- Le type de projet reste visible dans les deux modes, les technos seulement en mode recruteur -->
               <div class="d-flex flex-wrap gap-2 mb-4">
                 <span class="badge border border-info text-info"
-                  >Projet personnel, en production</span
+                  >Projet personnel, site en ligne</span
                 >
                 <span data-only="recruteur" class="badge text-bg-secondary">PHP</span>
                 <span data-only="recruteur" class="badge text-bg-secondary">WordPress</span>
@@ -274,8 +275,7 @@
                       >
                     </div>
                     <span class="cursor-label__text"
-                      >Vrai site en production, animation codée en JavaScript
-                      natif</span
+                      >Projet personnel, site en ligne</span
                     >
                   </div>
                   <div class="cursor-label col-sm-8">
@@ -291,14 +291,24 @@
                   </div>
                 </div>
                 <div class="col-12 col-lg-5">
-              <p class="mb-4">
-                Sporacultus est mon projet personnel de culture de champignons.
-                À l'origine un site vitrine, je le fais évoluer en boutique
-                WooCommerce sur mesure, avec un thème WordPress custom et des
-                gabarits personnalisés (catalogue, fiche produit,
-                mini-panier/panier), pensés pour convertir et faciliter la prise
-                de contact.
-              </p>
+              <!-- Même paragraphe dans les deux modes, sans le jargon côté client -->
+              <div class="pour-swap mb-4">
+                <p data-pour="recruteur" class="mb-0">
+                  Sporacultus est mon projet personnel de culture de
+                  champignons. À l'origine un site vitrine, je le fais évoluer
+                  en boutique WooCommerce sur mesure, avec un thème WordPress
+                  custom et des gabarits personnalisés (catalogue, fiche
+                  produit, mini-panier/panier), pensés pour convertir et
+                  faciliter la prise de contact.
+                </p>
+                <p data-pour="entrepreneur" class="mb-0">
+                  Sporacultus est mon projet personnel de culture de
+                  champignons. Au départ, le site servait seulement à présenter
+                  l'entreprise. Je le transforme en boutique en ligne faite sur
+                  mesure, avec un catalogue, des fiches produit et un panier,
+                  pensés pour vendre et faciliter la prise de contact.
+                </p>
+              </div>
               <p class="mb-4">
                 La page d'accueil propose une animation interactive : on y
                 découvre les produits que je mets de l'avant en creusant la
@@ -306,9 +316,10 @@
               </p>
               <div data-recruteur hidden class="mb-4">
                 <p class="mb-0 position-relative">
-                  L'animation s'aligne avec les objectifs principaux du site :
-                  éduquer les visiteurs sur la culture des champignons et faire
-                  connaître mes produits pour mieux les vendre.
+                  L'animation sert les objectifs du site. Elle attire
+                  l'attention, mais elle est pensée pour ramener rapidement vers
+                  la boutique et les produits. Elle est intégrée de manière à ne
+                  pas gêner un visiteur qui ne souhaite pas l'utiliser.
                   <br />Elle n'affecte pas le chargement de la page d'accueil,
                   qui obtient
                   <!-- .hover-preview : l'image apparaît au survol, ou au toucher grâce à tabindex. Elle s'aligne sur le bord gauche du paragraphe (position-relative) pour ne jamais sortir de l'écran -->
@@ -344,15 +355,19 @@
             <h3 class="mb-3">Brasserie Wabasso</h3>
             <div class="pour-swap fs-5 mb-4">
               <p data-pour="recruteur" class="mb-0">
-                Montre mon côté design : mise en page et style, avant le code.
+                Une page de site repensée en maquette, mise en page et style,
+                faite dans Figma.
               </p>
               <p data-pour="entrepreneur" class="mb-0">
                 Voici comment je conçois un site avant de le développer.
               </p>
             </div>
             <div class="d-flex flex-wrap gap-2 mb-4">
-              <span class="badge border border-info text-info"
+              <span data-only="recruteur" class="badge border border-info text-info"
                 >Projet scolaire, refonte fictive</span
+              >
+              <span data-only="entrepreneur" class="badge border border-info text-info"
+                >Projet scolaire, exercice de design</span
               >
               <span data-only="recruteur" class="badge text-bg-secondary">Figma</span>
             </div>
@@ -362,15 +377,22 @@
                 <div class="cursor-label">
                   <div id="wabasso-pdf" class="pdf-window rounded-3"></div>
                   <span class="cursor-label__text"
-                    >Design seulement, maquette faite dans Figma</span
+                    >Projet scolaire, refonte fictive</span
                   >
                 </div>
               </div>
               <div class="col-12 col-lg-5">
-                <p class="mb-4">
-                  Refonte fictive d'une page du site de la Brasserie Wabasso,
-                  conçue dans Figma dans un contexte scolaire.
-                </p>
+                <div class="pour-swap mb-4">
+                  <p data-pour="recruteur" class="mb-0">
+                    Refonte fictive d'une page du site de la Brasserie Wabasso,
+                    conçue dans Figma dans un contexte scolaire.
+                  </p>
+                  <p data-pour="entrepreneur" class="mb-0">
+                    Une page du site de la Brasserie Wabasso que j'ai redessinée
+                    pour un travail d'école. C'est un exercice, pas une commande
+                    de la brasserie.
+                  </p>
+                </div>
                 <button id="wabasso-btn" class="btn btn-primary">
                   Voir le design
                 </button>
