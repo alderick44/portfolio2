@@ -527,6 +527,8 @@
                       fois l’architecture confirmée, puis l’ouvrir aux
                       employés.
                     </p>
+                    <!-- Le reste de la carte se déplie avec le bouton « En savoir plus » -->
+                    <div class="collapse" id="experience-details">
                     <p class="mb-3">
                       WordPress n’était pas autorisé, alors j’ai fait un petit
                       outil en JavaScript pour modifier le contenu. L’intranet
@@ -545,6 +547,18 @@
                       J’ai tenu à documenter où en est le projet, la dette
                       technique, les points à surveiller et mes suggestions.
                     </p>
+                    </div>
+                    <button
+                      class="collapse-toggle btn btn-primary btn-compact d-block mb-3"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#experience-details"
+                      aria-expanded="false"
+                      aria-controls="experience-details"
+                    >
+                      <span class="collapse-toggle__more">En savoir plus</span>
+                      <span class="collapse-toggle__less">Voir moins</span>
+                    </button>
                     <div class="d-flex flex-wrap gap-2">
                       <span class="badge text-bg-secondary">HTML/CSS</span>
                       <span class="badge text-bg-secondary">JavaScript</span>

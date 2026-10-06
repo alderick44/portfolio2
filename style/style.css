@@ -33,6 +33,13 @@ h4 {
   min-width: 10em;
   max-width: 15em;
 }
+/* Petite taille de bouton, mêmes dimensions que le bouton flottant « Voir Réalisations » */
+.btn-compact {
+  min-width: 0;
+  max-width: none;
+  font-size: 0.95rem;
+  padding: 0.55rem 1rem;
+}
 .btn:hover {
   background-color: #614093;
   border-color: #6a3a9b;
@@ -320,6 +327,11 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
     clip-path: inset(50%);
     white-space: nowrap;
   }
+}
+/* Bouton qui déplie un bloc : le libellé change selon l'état (Bootstrap met à jour aria-expanded) */
+.collapse-toggle[aria-expanded="false"] .collapse-toggle__less,
+.collapse-toggle[aria-expanded="true"] .collapse-toggle__more {
+  display: none;
 }
 /* Texte qui montre une image au survol ou au focus (.hover-preview) */
 .hover-preview {
