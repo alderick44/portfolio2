@@ -38,12 +38,7 @@
       content="Aldérick Gauthier, développeur web, avec le choix Recruter un junior ou Créer un site web"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
+    <link href="assets/vendor/bootstrap.min.css" rel="stylesheet" />
     <link href="style/style.css?v=13" rel="stylesheet" />
     <link href="style/effects.css?v=1" rel="stylesheet" />
     <!-- Icônes et police chargées sans bloquer l'affichage (media="print" puis "all" au chargement) -->
@@ -283,13 +278,12 @@
                     <div class="position-relative">
                       <video
                         class="rounded-4 img-fluid d-block w-100"
-                        src="assets/video/spora-demo.mp4"
+                        data-src="assets/video/spora-demo.mp4"
                         poster="assets/img/spora-demo-poster.jpg"
-                        autoplay
                         muted
                         loop
                         playsinline
-                        preload="metadata"
+                        preload="none"
                         aria-label="Démonstration de l'animation interactive de la page d'accueil de Sporacultus"
                       ></video>
                       <a
@@ -932,11 +926,7 @@
       class="btn btn-primary realisations-sticky"
       >Voir Réalisations ↑</a
     >
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
     <script src="assets/js/Gradient.js"></script>
     <script src="assets/js/mode.js"></script>
     <script src="assets/js/pill-switch.js"></script>

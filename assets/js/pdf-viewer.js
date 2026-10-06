@@ -1,9 +1,7 @@
 //Principalement fait par IA
 
-import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.5.207/legacy/build/pdf.min.mjs";
-
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.5.207/legacy/build/pdf.worker.min.mjs";
+// pdf.js (140 Ko) n'est importé qu'au moment de charger le PDF
+const PDFJS_BASE = "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.5.207/legacy/build/";
 
 const container = document.getElementById("wabasso-pdf");
 const pdfUrl = "assets/pdf/WABASSO-wireframe-desktop.pdf";
@@ -45,6 +43,8 @@ let renderPromise = null;
 const startLoading = () => {
   if (!renderPromise) {
     renderPromise = (async () => {
+      const pdfjsLib = await import(PDFJS_BASE + "pdf.min.mjs");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_BASE + "pdf.worker.min.mjs";
       const pdf = await pdfjsLib.getDocument({
         url: pdfUrl,
         disableRange: true,

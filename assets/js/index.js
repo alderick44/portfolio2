@@ -1,10 +1,26 @@
-/* Mouvement réduit : la démo vidéo ne démarre pas toute seule, on la lance avec les commandes */
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.querySelectorAll("video[autoplay]").forEach((v) => {
-    v.removeAttribute("autoplay");
-    v.pause();
-    v.controls = true;
-  });
+/* La vidéo démo ne se télécharge que lorsqu'elle approche de l'écran.
+   Mouvement réduit : elle ne démarre pas toute seule, on la lance avec les commandes. */
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const loadVideo = (v) => {
+  v.src = v.dataset.src;
+  if (reduceMotion) v.controls = true;
+  else v.play().catch(() => {});
+};
+const lazyVideos = document.querySelectorAll("video[data-src]");
+if ("IntersectionObserver" in window) {
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        videoObserver.unobserve(e.target);
+        loadVideo(e.target);
+      });
+    },
+    { rootMargin: "300px 0px" },
+  );
+  lazyVideos.forEach((v) => videoObserver.observe(v));
+} else {
+  lazyVideos.forEach(loadVideo);
 }
 
 const sectionFormation = document.querySelector("#formation");
