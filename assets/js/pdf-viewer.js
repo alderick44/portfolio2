@@ -17,6 +17,8 @@ previewWrapper.style.maxHeight = "70vh";
 
 const previewImg = document.createElement("img");
 previewImg.src = "assets/img/wabasso-preview.webp";
+previewImg.loading = "lazy";
+previewImg.alt = "Aperçu du design du site Wabasso";
 previewImg.classList.add("d-block", "rounded-4");
 previewImg.style.width = "100%";
 
@@ -68,14 +70,20 @@ const startLoading = () => {
   return renderPromise;
 };
 
-// Dès que la page est chargée, on lance le tout quand le navigateur est inactif
-const whenIdle = () =>
-  "requestIdleCallback" in window
-    ? requestIdleCallback(startLoading, { timeout: 3000 })
-    : setTimeout(startLoading, 1000);
-
-if (document.readyState === "complete") whenIdle();
-else window.addEventListener("load", whenIdle, { once: true });
+// On lance le tout seulement quand la section approche de l'écran, pour ne pas
+// télécharger 4 Mo au chargement de la page. Sinon, le clic s'en charge.
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        observer.disconnect();
+        startLoading();
+      }
+    },
+    { rootMargin: "600px 0px" },
+  );
+  observer.observe(container);
+}
 
 // --- Au clic : spinner (si le rendu n'est pas fini) puis affichage du canvas ---
 btn.addEventListener("click", async () => {
