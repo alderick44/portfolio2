@@ -44,7 +44,8 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link href="style/style.css?v=12" rel="stylesheet" />
+    <link href="style/style.css?v=13" rel="stylesheet" />
+    <link href="style/effects.css?v=1" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
@@ -133,11 +134,18 @@
           </div>
           <div class="container">
             <div class="row py-5">
-              <div class="d-inline d-sm-flex">
+              <div
+                class="d-flex flex-column flex-lg-row align-items-center w-100"
+              >
                 <div
-                  class="d-flex justify-content-end py-0 my-0 col-12 col-lg-6"
+                  class="d-flex justify-content-center justify-content-lg-end py-0 my-0 col-12 col-lg-6"
                 >
-                  <div class="py-0 my-0 profile-picture-zone">
+                  <div
+                    class="py-0 my-0 draggable-zone"
+                    data-stick="0.5"
+                    data-magnet="0.25"
+                    data-reach="200"
+                  >
                     <img
                       src="assets/img/profile-crop-1200.jpg"
                       alt="Portrait d'Aldérick Gauthier"
@@ -145,7 +153,7 @@
                     />
                   </div>
                 </div>
-                <p class="d-flex align-items-center">
+                <p class="d-flex align-items-center col-12 col-lg-6">
                   Ce que j’aime dans le web, c’est bâtir des choses que je vois
                   prendre forme et se polir. Je m’intéresse surtout à
                   l’expérience utilisateur et à l’interface, mais je suis
@@ -253,7 +261,7 @@
               <!-- Même grille que Wabasso : média à gauche, texte et bouton à droite -->
               <div class="row g-4 g-lg-5 align-items-start">
                 <div class="col-12 col-lg-7">
-                  <div class="cursor-label mb-4">
+                  <div class="media-caption mb-4">
                     <div class="position-relative">
                       <video
                         class="rounded-4 img-fluid d-block w-100"
@@ -274,18 +282,18 @@
                         >sporacultus.ca ↗</a
                       >
                     </div>
-                    <span class="cursor-label__text"
+                    <span class="media-caption__text"
                       >Animation interactive menant aux produits vedettes</span
                     >
                   </div>
-                  <div class="cursor-label col-sm-8">
+                  <div class="media-caption col-sm-8">
                     <img
                       src="assets/img/spora-shop-and-minicart.webp"
                       alt="Boutique Sporacultus avec mini-panier ouvert"
                       class="rounded-4 img-fluid d-block w-100"
                       loading="lazy"
                     />
-                    <span class="cursor-label__text"
+                    <span class="media-caption__text"
                       >Mini-panier fait sur mesure</span
                     >
                   </div>
@@ -385,10 +393,10 @@
             </div>
             <div class="row g-4 g-lg-5 align-items-start">
               <div class="col-12 col-lg-7">
-                <!-- .cursor-label : l'étiquette suit le curseur au survol, et devient une légende sous le média au tactile -->
-                <div class="cursor-label">
+                <!-- .media-caption : bulle qui suit le curseur au survol, légende dans le média au toucher (assets/js/effects/media-caption.js) -->
+                <div class="media-caption">
                   <div id="wabasso-pdf" class="pdf-window rounded-3"></div>
-                  <span class="cursor-label__text"
+                  <span class="media-caption__text"
                     >Projet scolaire, refonte fictive</span
                   >
                 </div>
@@ -479,39 +487,39 @@
                 <img
                   src="assets/icons/logo-bootstrap.svg"
                   alt="Logo de Bootstrap"
-                  class="img-fluid col-2 col-lg-1 profile-picture-zone"
+                  class="img-fluid col-2 col-lg-1 draggable-zone"
                 />
                 <img
                   src="assets/icons/logo-javascript.svg"
                   alt="Logo de Javascript"
-                  class="img-fluid col-2 col-lg-1 profile-picture-zone"
+                  class="img-fluid col-2 col-lg-1 draggable-zone"
                 />
                 <img
                   src="assets/icons/logo-github.svg"
                   alt="Logo de Github"
-                  class="img-fluid col-2 col-lg-1 profile-picture-zone"
+                  class="img-fluid col-2 col-lg-1 draggable-zone"
                 />
                 <img
                   src="assets/icons/logo-php.svg"
                   alt="Logo de php"
-                  class="img-fluid col-2 col-lg-1 profile-picture-zone"
+                  class="img-fluid col-2 col-lg-1 draggable-zone"
                 />
               </div>
               <div class="row mb-5 pb-3 justify-content-between">
                 <img
                   src="assets/icons/logo-wordpress.svg"
                   alt="Logo de Wordpress"
-                  class="img-fluid col-2 col-lg-1 profile-picture-zone"
+                  class="img-fluid col-2 col-lg-1 draggable-zone"
                 />
                 <img
                   src="assets/icons/logo-figma.svg"
                   alt="Logo de Figma"
-                  class="img-fluid col-2 col-lg-1 p-4 profile-picture-zone"
+                  class="img-fluid col-2 col-lg-1 p-4 draggable-zone"
                 />
               </div>
               <h3 class="mb-4">Expérience</h3>
               <div class="w-100 d-flex justify-content-center">
-                <div class="w-75">
+                <div class="cards-wrap">
                   <div
                     class="border rounded-4 p-4 mb-3 bg-dark bg-opacity-50"
                   >
@@ -609,7 +617,7 @@
               </p>
               <div>
                 <div data-sentinel class="w-100 d-flex justify-content-center">
-                  <div class="w-75">
+                  <div class="cards-wrap">
                     <div
                       class="flex border rounded-4 p-4 mb-3 bg-dark bg-opacity-50"
                     >
@@ -819,7 +827,7 @@
             </div>
             <div data-only="entrepreneur" class="collapse w-100" id="formation">
               <div class="w-100 d-flex justify-content-center">
-                <div class="w-75">
+                <div class="cards-wrap">
                   <div
                     class="flex border rounded-4 p-4 mb-3 bg-dark bg-opacity-50"
                   >
@@ -915,7 +923,8 @@
     <script src="assets/js/mode.js"></script>
     <script src="assets/js/pill-switch.js"></script>
     <script src="assets/js/index.js"></script>
-    <script src="assets/js/cursor-label.js"></script>
+    <script src="assets/js/effects/media-caption.js"></script>
+    <script src="assets/js/effects/draggable-zone.js"></script>
     <script type="module" src="assets/js/pdf-viewer.js"></script>
     <script>
       var gradient = new Gradient({
