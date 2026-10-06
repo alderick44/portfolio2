@@ -1,0 +1,111 @@
+/* Styles des effets d'interaction. Chaque bloc va avec un fichier de assets/js/effects/ :
+   pour retirer un effet, supprimer son fichier JS, sa balise <script> et son bloc ici.
+   Les règles qui cachent ou bloquent quelque chose ne s'appliquent que si le JS a ajouté
+   la classe has-... sur <html>, donc sans le script la page garde son comportement normal. */
+
+/* ===== draggable-zone (assets/js/effects/draggable-zone.js) =====
+   La photo et les logos : attirés par la souris, poussés au doigt, photo accrochée au bas de l'écran. */
+.draggable-zone {
+  transition: transform 0.35s ease-out;
+  -webkit-user-drag: none;
+}
+/* Le décalage `translate` de la photo est animé par le JS (--translate-transition) */
+.draggable-zone[data-stick] {
+  transition:
+    transform 0.35s ease-out,
+    translate var(--translate-transition, 0.3s ease-out);
+}
+/* La photo, grande, laisse le défilement vertical de la page : seul le glissement horizontal la déplace.
+   Les logos, petits, se poussent dans tous les sens. */
+.has-draggable-zone .draggable-zone {
+  touch-action: pan-y;
+}
+.has-draggable-zone .draggable-zone:not([data-stick]) {
+  touch-action: none;
+}
+/* Suit le doigt sans retard, le retour en place se fait au relâchement */
+.draggable-zone.is-dragging {
+  transition: none;
+}
+
+/* ===== media-caption (assets/js/effects/media-caption.js) =====
+   Légende d'un média : bulle qui suit la souris, ou légende dans l'image au toucher. */
+.media-caption {
+  position: relative;
+}
+.media-caption__text,
+.media-caption-bubble {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(20, 22, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: #dbe2ff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+/* Sans le script : légende simple sous le média */
+.media-caption__text {
+  display: block;
+  width: max-content;
+  max-width: min(22rem, 100vw - 1.5rem);
+  margin-top: 0.5rem;
+  border-radius: 1rem;
+}
+.media-caption__text[hidden] {
+  display: none;
+}
+/* Tactile : la légende est posée dans l'image et apparaît au toucher */
+@media not all and (hover: hover) and (pointer: fine) {
+  .has-media-caption .media-caption__text {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    margin: 0;
+    max-width: calc(100% - 1.5rem);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+  }
+  .has-media-caption .media-caption.is-caption-open .media-caption__text:not([hidden]) {
+    opacity: 1;
+  }
+}
+.media-caption-bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2200;
+  max-width: 20rem;
+  border-radius: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.media-caption-bubble.is-visible {
+  opacity: 1;
+}
+/* Avec une souris, le texte reste lisible par les lecteurs d'écran mais n'est pas affiché */
+@media (hover: hover) and (pointer: fine) {
+  .has-media-caption .media-caption__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Mouvement réduit : plus de transition sur les effets */
+@media (prefers-reduced-motion: reduce) {
+  .draggable-zone,
+  .draggable-zone[data-stick],
+  .media-caption-bubble {
+    transition: none;
+  }
+}
