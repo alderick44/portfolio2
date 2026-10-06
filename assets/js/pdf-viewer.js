@@ -1,9 +1,9 @@
 //Principalement fait par IA
 
-import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.5.207/build/pdf.min.mjs";
+import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.5.207/legacy/build/pdf.min.mjs";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.5.207/build/pdf.worker.min.mjs";
+  "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.5.207/legacy/build/pdf.worker.min.mjs";
 
 const container = document.getElementById("wabasso-pdf");
 const pdfUrl = "assets/pdf/WABASSO-wireframe-desktop.pdf";
@@ -43,7 +43,11 @@ let renderPromise = null;
 const startLoading = () => {
   if (!renderPromise) {
     renderPromise = (async () => {
-      const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+      const pdf = await pdfjsLib.getDocument({
+        url: pdfUrl,
+        disableRange: true,
+        disableStream: true,
+      }).promise;
       const page = await pdf.getPage(1);
       const viewport = page.getViewport({ scale: 0.5 });
 
@@ -56,6 +60,10 @@ const startLoading = () => {
       await page.render({ canvasContext: fullCanvas.getContext("2d"), viewport }).promise;
       return fullCanvas;
     })();
+    // Si ça échoue, on oublie la promesse pour pouvoir réessayer au clic
+    renderPromise.catch(() => {
+      renderPromise = null;
+    });
   }
   return renderPromise;
 };
@@ -74,7 +82,22 @@ btn.addEventListener("click", async () => {
   btn.disabled = true;
   btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Chargement...`;
 
-  const fullCanvas = await startLoading();
+  let fullCanvas;
+  try {
+    fullCanvas = await startLoading();
+  } catch (err) {
+    console.error(err);
+    const msg = document.createElement("p");
+    msg.className = "small text-danger fs-6 fw-bold mb-2";
+    msg.textContent = "Erreur, l'aperçu n'a pas pu s'afficher.";
+    const link = document.createElement("a");
+    link.className = "btn btn-primary";
+    link.href = pdfUrl;
+    link.download = "";
+    link.textContent = "Télécharger le design";
+    btn.replaceWith(msg, link);
+    return;
+  }
 
   previewWrapper.remove();
   btn.remove();
