@@ -11,6 +11,15 @@
     <meta name="theme-color" content="#141622" />
     <link rel="canonical" href="https://agauthier.ca/" />
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <noscript>
+      <!-- Sans JavaScript : tout le contenu reste lisible, sans pilule ni double version des textes -->
+      <style>
+        .collapse:not(.show) { display: block !important; }
+        .pill-switch-slot, .realisations-sticky { display: none !important; }
+        .pour-swap > [data-pour="entrepreneur"] { display: none; }
+        [data-recruteur][hidden] { display: block !important; }
+      </style>
+    </noscript>
     <!-- Aperçu de partage (LinkedIn, Facebook, messageries) -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_CA" />
@@ -35,7 +44,7 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link href="style/style.css?v=2" rel="stylesheet" />
+    <link href="style/style.css?v=12" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
@@ -64,10 +73,61 @@
                   <p class="word word-1 text-center w-100 fs-3">Designer</p>
                   <p class="word word-2 text-center w-100 fs-3">Développeur</p>
                 </div>
-                <p class="fs-3 w-100 pt-5">Web junior</p>
+                <p class="fs-3 w-100 pt-5">Web</p>
               </div>
-              <div>
-                <!-- <p class="fs-5 text-center">Le design dans les détails, la clarté dans l'ensemble:<br> je construis des sites réfléchis, clairs et efficaces.</p> -->
+              <!-- .pour-swap : une accroche par mode, voir style.css -->
+              <div class="pour-swap fs-5 text-center">
+                <p data-pour="recruteur" class="mb-0">
+                  Développeur front-end junior, disponible pour mandats.
+                </p>
+                <p data-pour="entrepreneur" class="mb-0">
+                  Votre site web, du design à la mise en ligne.
+                </p>
+              </div>
+            </div>
+            <!-- If this element is in viewport, the pill switch increases size -->
+            <div data-sentinel class="pill-switch-slot w-100 text-center">
+              <p class="pill-switch-question">Qu’est-ce qui vous amène ?</p>
+              <div class="pill-switch-anchor">
+                <div class="d-flex justify-content-center pill-switch-wrap">
+                  <div class="pill-switch-wrap-inner">
+                    <div
+                      class="pill-switch"
+                      id="nav-switch"
+                      data-state="recruteur"
+                      role="tablist"
+                      aria-label="Type de profil"
+                    >
+                      <button
+                        class="pill-switch__btn is-active"
+                        id="tab-recruteur"
+                        data-target="recruteur"
+                        role="tab"
+                        aria-controls="recruteur"
+                        aria-selected="true"
+                      >
+                        Recruter un junior
+                      </button>
+                      <button
+                        class="pill-switch__btn"
+                        id="tab-entrepreneur"
+                        data-target="entrepreneur"
+                        role="tab"
+                        aria-controls="entrepreneur"
+                        aria-selected="false"
+                      >
+                        Créer un site web
+                      </button>
+                      <span class="pill-switch__thumb" aria-hidden="true"></span>
+                    </div>
+                    <!-- Shown when the mode changes while the panels are out of view -->
+                    <a
+                      class="pill-switch-hint"
+                      href="#recruteur"
+                      aria-live="polite"
+                    ></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -79,27 +139,64 @@
                 >
                   <div class="py-0 my-0 profile-picture-zone">
                     <img
-                      src="assets/img/profile-crop.jpg"
+                      src="assets/img/profile-crop-1200.jpg"
                       alt="Portrait d'Aldérick Gauthier"
                       class="rounded-circle hero-portrait"
                     />
                   </div>
                 </div>
                 <p class="d-flex align-items-center">
-                  Ce que j’aime dans le web, c’est la possibilité de transformer
-                  une idée en une expérience claire, utile et agréable à
-                  utiliser. Je m’intéresse particulièrement à l’interface, à
-                  l’expérience utilisateur et à l’amélioration continue d’un
-                  projet au fil des itérations. J’aime comprendre ce qui bloque,
-                  tester des solutions, avec un souci de clarté, de cohérence et
-                  de qualité.
+                  Ce que j’aime dans le web, c’est bâtir des choses que je vois
+                  prendre forme et se polir. Je m’intéresse surtout à
+                  l’expérience utilisateur et à l’interface, mais je suis
+                  également débrouillard pour mettre en place un projet
+                  complet.
                 </p>
               </div>
-              <div class="col-12 d-flex justify-content-center mt-5 mb-3">
+              <div class="pour-swap col-12 text-center mt-5">
+                <div data-pour="recruteur">
+                  <p class="mb-3">
+                    Disponible rapidement pour des mandats.<br />
+                    Mon CV et mon code sont à portée de main.
+                  </p>
+                  <div
+                    class="d-flex flex-wrap justify-content-center column-gap-4 row-gap-2"
+                  >
+                    <a
+                      href="assets/pdf/CV-Aldérick-Gauthier.pdf"
+                      target="_blank"
+                      class="link-info"
+                      >Télécharger mon CV</a
+                    >
+                    <a
+                      href="https://github.com/alderick44"
+                      target="_blank"
+                      rel="noopener"
+                      class="link-info"
+                      >Profil GitHub</a
+                    >
+                  </div>
+                </div>
+                <div data-pour="entrepreneur">
+                  <p class="mb-3">
+                    Un site clair, rapide et adapté au mobile, du plan à la mise
+                    en ligne.<br />
+                    Vous êtes tenu au courant à chaque étape.
+                  </p>
+                </div>
+              </div>
+              <div class="pour-swap pour-swap--full col-12 mt-5 mb-3">
                 <a
-                  href="mailto:contact@agauthier.ca?subject=Prise%20de%20contact"
-                  class="btn btn-primary d-flex align-items-center justify-content-center z-3 col-12"
+                  data-pour="recruteur"
+                  href="mailto:contact@agauthier.ca?subject=Opportunit%C3%A9%20de%20travail"
+                  class="btn btn-primary d-flex align-items-center justify-content-center z-3 w-100"
                   >Me contacter</a
+                >
+                <a
+                  data-pour="entrepreneur"
+                  href="mailto:contact@agauthier.ca?subject=Projet%20de%20site%20web"
+                  class="btn btn-primary d-flex align-items-center justify-content-center z-3 w-100"
+                  >Parler de votre site</a
                 >
               </div>
               <div
@@ -123,35 +220,6 @@
         </div>
       </section>
       <div class="container">
-        <!-- <div data-sentinel></div> If this element is in viewport, the pill switch increases size -->
-        <div class="d-flex justify-content-center pill-switch-wrap mt-2 pb-5">
-          <div class="pill-switch-wrap-inner">
-            <div
-              class="pill-switch"
-              id="nav-switch"
-              role="tablist"
-              aria-label="Type de profil"
-            >
-              <button
-                class="pill-switch__btn px-1 fs-6"
-                data-target="recruteur"
-                role="tab"
-                aria-selected="true"
-              >
-                Mandats en agence
-              </button>
-              <button
-                class="pill-switch__btn is-active px-1 fs-6"
-                data-target="entrepreneur"
-                role="tab"
-                aria-selected="false"
-              >
-                Création de site
-              </button>
-              <span class="pill-switch__thumb" aria-hidden="true"></span>
-            </div>
-          </div>
-        </div>
         <section class="d-flex flex-column my-5 py-5" id="realisations">
           <div
             class="w-100 d-flex justify-content-center align-items-center flex-column py-5 border-top border-1"
@@ -161,122 +229,222 @@
             </div>
             <div id="realisations-spora">
               <h3 class="mb-3">Sporacultus</h3>
-              <p class="w-75 mb-4">
-                Sporacultus est mon projet personnel de culture de champignons.
-                À l'origine, c'était un site vitrine réalisé dans un cadre
-                scolaire, je le fais évoluer en boutique WooCommerce sur mesure,
-                avec un design et une expérience utilisateur pensés pour
-                convertir et faciliter la prise de contact.
-              </p>
-              <div
-                class="d-flex flex-column flex-sm-row justify-content-center gap-4 py-5"
-              >
-                <div>
-                  <img
-                    src="assets/img/spora-shop.png"
-                    alt="Aperçu du projet Sporacultus"
-                    class="rounded-4 img-fluid"
-                  />
-                </div>
-                <div class="p-5 p-sm-0">
-                  <img
-                    src="assets/img/spora-shop-and-minicart.png"
-                    alt="Aperçu du projet Sporacultus"
-                    class="rounded-4 img-fluid"
-                  />
-                </div>
+              <div class="pour-swap fs-5 mb-4">
+                <p data-pour="recruteur" class="mb-0">
+                  Un site vitrine devenu boutique en ligne, fait avec un
+                  <strong>thème WordPress sur mesure</strong> et
+                  <strong>WooCommerce</strong>.
+                </p>
+                <p data-pour="entrepreneur" class="mb-0">
+                  Un site de présentation devenu boutique en ligne, pensé pour
+                  vendre et faciliter la prise de contact.
+                </p>
               </div>
-              <!-- <p class="mb-4">
-                                Côté technique, j’y développe un thème WordPress custom et je personnalise des gabarits WooCommerce (catalogue, fiche produit, mini-panier/panier), tout en améliorant progressivement la structure du code afin d’en renforcer la maintenabilité.
-                            </p> -->
+              <!-- Le type de projet reste visible dans les deux modes, les technos seulement en mode recruteur -->
+              <div class="d-flex flex-wrap gap-2 mb-4">
+                <span class="badge border border-info text-info"
+                  >Projet personnel, site en ligne</span
+                >
+                <span data-only="recruteur" class="badge text-bg-secondary">PHP</span>
+                <span data-only="recruteur" class="badge text-bg-secondary">WordPress</span>
+                <span data-only="recruteur" class="badge text-bg-secondary">WooCommerce</span>
+                <span data-only="recruteur" class="badge text-bg-secondary">JavaScript</span>
+              </div>
+              <!-- Même grille que Wabasso : média à gauche, texte et bouton à droite -->
+              <div class="row g-4 g-lg-5 align-items-start">
+                <div class="col-12 col-lg-7">
+                  <div class="cursor-label mb-4">
+                    <div class="position-relative">
+                      <video
+                        class="rounded-4 img-fluid d-block w-100"
+                        src="assets/video/spora-demo.mp4"
+                        poster="assets/img/spora-demo-poster.jpg"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                        aria-label="Démonstration de l'animation interactive de la page d'accueil de Sporacultus"
+                      ></video>
+                      <a
+                        href="https://sporacultus.ca/"
+                        target="_blank"
+                        rel="noopener"
+                        class="badge rounded-pill text-bg-dark text-decoration-none position-absolute bottom-0 end-0 m-3 fs-6"
+                        >sporacultus.ca ↗</a
+                      >
+                    </div>
+                    <span class="cursor-label__text"
+                      >Projet personnel, site en ligne</span
+                    >
+                  </div>
+                  <div class="cursor-label col-sm-8">
+                    <img
+                      src="assets/img/spora-shop-and-minicart.webp"
+                      alt="Boutique Sporacultus avec mini-panier ouvert"
+                      class="rounded-4 img-fluid d-block w-100"
+                      loading="lazy"
+                    />
+                    <span class="cursor-label__text"
+                      >Mini-panier fait sur mesure</span
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-lg-5">
+              <!-- Même paragraphe dans les deux modes, sans le jargon côté client -->
+              <div class="pour-swap mb-4">
+                <p data-pour="recruteur" class="mb-0">
+                  Sporacultus est mon projet personnel de culture de
+                  champignons. À l'origine un site vitrine, je le fais évoluer
+                  en boutique WooCommerce sur mesure, avec un thème WordPress
+                  custom et des gabarits personnalisés (catalogue, fiche
+                  produit, mini-panier/panier), pensés pour convertir et
+                  faciliter la prise de contact.
+                </p>
+                <p data-pour="entrepreneur" class="mb-0">
+                  Sporacultus est mon projet personnel de culture de
+                  champignons. Au départ, le site servait seulement à présenter
+                  l'entreprise. Je le transforme en boutique en ligne faite sur
+                  mesure, avec un catalogue, des fiches produit et un panier,
+                  pensés pour vendre et faciliter la prise de contact.
+                </p>
+              </div>
               <p class="mb-4">
-                L'image suivante montre le header déployé révélant la navigation
-                utilitaire quand on défile vers le haut :
+                La page d'accueil propose une animation interactive : on y
+                découvre les produits que je mets de l'avant en creusant la
+                terre, puis on peut les faire pousser.
               </p>
-              <div>
-                <img
-                  src="assets/img/spora-header.png"
-                  alt="Aperçu du projet Sporacultus"
-                  class="rounded-4 img-fluid w-75 d-none d-lg-block"
-                />
-              </div>
-              <div>
-                <img
-                  src="assets/img/spora-header.png"
-                  alt="Aperçu du projet Sporacultus"
-                  class="rounded-4 img-fluid w-100 d-lg-none"
-                />
-              </div>
-              <div class="py-4">
+              <div data-recruteur hidden class="mb-4">
+                <p class="mb-0 position-relative">
+                  L'animation sert les objectifs du site. Elle attire
+                  l'attention, mais elle est pensée pour ramener rapidement vers
+                  la boutique et les produits. Elle est intégrée de manière à ne
+                  pas gêner un visiteur qui ne souhaite pas l'utiliser.
+                  <br />Elle n'affecte pas le chargement de la page d'accueil,
+                  qui obtient
+                  <!-- .hover-preview : l'image apparaît au survol, ou au toucher grâce à tabindex. Elle s'aligne sur le bord gauche du paragraphe (position-relative) pour ne jamais sortir de l'écran -->
+                  <strong class="hover-preview" tabindex="0"
+                    ><img
+                      class="hover-preview__img"
+                      src="assets/img/spora-lighthouse.png"
+                      alt="Résultats Lighthouse de la page d'accueil de sporacultus.ca, 98 en performance, 98 en accessibilité, 100 en bonnes pratiques, 100 en SEO"
+                      width="557"
+                      height="186"
+                      loading="lazy"
+                    />98 en performance sur Lighthouse en mode mobile</strong
+                  >. Elle se charge en morceaux, pendant qu'on l'utilise.
+                  <br />Côté accessibilité, un logo statique remplace
+                  l'animation si le visiteur a demandé de réduire les
+                  animations.
+                </p>
                 <!-- <p data-recruteur hidden class="mb-4">
                                     Ce projet me permet d’apprendre sur un cas réel avec WordPress, PHP et WooCommerce. J’y développe de meilleurs réflexes pour comprendre sur quels fichiers intervenir, comment WordPress assemble les pages et comment faire des ajustements sans nuire à la structure existante. Chaque problème rencontré m’aide à progresser vers un code plus propre et plus maintenable.
                                 </p> -->
-                <p class="mb-0">
-                  Ce projet m’a permis de développer ma capacité à concevoir une
-                  boutique réelle, avec une interface adaptée, une structure
-                  claire et une expérience utilisateur soignée.
-                </p>
               </div>
-              <div class="d-flex justify-content-center mt-4">
-                <a
-                  href="https://sporacultus.ca/"
-                  target="_blank"
-                  class="btn btn-primary"
-                  >Voir le site Web</a
-                >
+              <a
+                href="https://sporacultus.ca/"
+                target="_blank"
+                class="btn btn-primary"
+                >Voir Sporacultus</a
+              >
+                </div>
               </div>
             </div>
           </div>
           <div class="py-5 my-5">
             <h3 class="mb-3">Brasserie Wabasso</h3>
-            <p class="mb-3">Refonte fictive du design</p>
-            <div>
-              <div class="d-flex justify-content-start">
-                <div id="wabasso-pdf" class="w-50 pdf-window rounded-3"></div>
+            <div class="pour-swap fs-5 mb-4">
+              <p data-pour="recruteur" class="mb-0">
+                Une page de site repensée en maquette, mise en page et style,
+                faite dans Figma.
+              </p>
+              <p data-pour="entrepreneur" class="mb-0">
+                Voici comment je conçois un site avant de le développer.
+              </p>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span data-only="recruteur" class="badge border border-info text-info"
+                >Projet scolaire, refonte fictive</span
+              >
+              <span data-only="entrepreneur" class="badge border border-info text-info"
+                >Projet scolaire, exercice de design</span
+              >
+              <span data-only="recruteur" class="badge text-bg-secondary">Figma</span>
+            </div>
+            <div class="row g-4 g-lg-5 align-items-start">
+              <div class="col-12 col-lg-7">
+                <!-- .cursor-label : l'étiquette suit le curseur au survol, et devient une légende sous le média au tactile -->
+                <div class="cursor-label">
+                  <div id="wabasso-pdf" class="pdf-window rounded-3"></div>
+                  <span class="cursor-label__text"
+                    >Projet scolaire, refonte fictive</span
+                  >
+                </div>
               </div>
-              <div class="d-flex justify-content-center">
-                <button id="wabasso-btn" class="btn btn-primary mt-3">
+              <div class="col-12 col-lg-5">
+                <div class="pour-swap mb-4">
+                  <p data-pour="recruteur" class="mb-0">
+                    Refonte fictive d'une page du site de la Brasserie Wabasso,
+                    conçue dans Figma dans un contexte scolaire.
+                  </p>
+                  <p data-pour="entrepreneur" class="mb-0">
+                    Une page du site de la Brasserie Wabasso que j'ai redessinée
+                    pour un travail d'école. C'est un exercice, pas une commande
+                    de la brasserie.
+                  </p>
+                </div>
+                <button id="wabasso-btn" class="btn btn-primary">
                   Voir le design
                 </button>
               </div>
             </div>
           </div>
-          <div class="py-5 my-5">
+          <!-- data-only : devoir d'intégration, utile au recruteur seulement -->
+          <div data-only="recruteur" class="py-5">
             <h3 class="mb-3">Verger Barry</h3>
-            <p class="mb-0">Refonte fictive du design.</p>
-            <p>
-              Dans l’esprit d’une refonte réelle, j’ai cherché à conserver le
-              style et la palette de couleurs d’origine, tout en repensant la
-              disposition des informations et des sections afin d’offrir une
-              navigation plus fluide et une compréhension plus rapide du contenu
-              pertinent.
-            </p>
-            <img
-              src="/assets/img/vergerbarry-preview.png"
-              class="w-50 rounded-1"
-            />
-            <div class="d-flex flex-column align-items-center py-4">
-              <a
-                href="https://projet-synthese.netlify.app/"
-                target="_blank"
-                class="btn btn-primary"
-                >Voir la refonte <br />(version ordinateur)</a
+            <div class="pour-swap fs-5 mb-4">
+              <p data-pour="recruteur" class="mb-0">
+                Montre mon intégration : une refonte codée à la main à partir
+                d'un vrai site.
+              </p>
+              <p data-pour="entrepreneur" class="mb-0">
+                Un site existant repensé pour qu'on y trouve l'information
+                plus vite.
+              </p>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span class="badge border border-info text-info"
+                >Projet scolaire, refonte fictive</span
               >
-              <a
-                href="https://www.vergerbarry.com/"
-                target="_blank"
-                class="btn btn-primary my-4"
-                >Voir le site original</a
-              >
+              <span data-only="recruteur" class="badge text-bg-secondary">HTML/CSS</span>
+              <span data-only="recruteur" class="badge text-bg-secondary">Bootstrap</span>
+            </div>
+            <div class="row">
+              <div class="col-12 col-lg-8">
+                <p class="mb-3">
+                  Refonte du site du Verger Barry, intégrée à la main en HTML,
+                  CSS et Bootstrap. J’ai gardé le style et la palette de
+                  couleurs d’origine, et repensé la disposition des sections
+                  pour qu’on trouve l’information plus vite.
+                </p>
+                <a
+                  href="https://github.com/alderick44/verger-barry"
+                  target="_blank"
+                  rel="noopener"
+                  class="link-info"
+                  >Voir le code sur GitHub</a
+                >
+              </div>
             </div>
           </div>
         </section>
-        <section data-sentinel class="collapse w-100 my-5 py-5" id="recruteur">
+        <section data-sentinel class="collapse w-100 my-5 py-5" id="recruteur" role="tabpanel" aria-labelledby="tab-recruteur">
           <div
             class="w-100 d-flex justify-content-center align-items-center flex-column py-5 border-top border-1"
           >
-            <div class="mb-5">
-              <h2 class="my-5">Mandats en agence</h2>
+            <div class="w-100">
+              <h2 class="my-5">Pour les recruteurs</h2>
+              <div class="mb-5">
               <h3 class="mb-2">Développeur front-end junior</h3>
               <p class="fs-6 fst-italic mb-4">
                 Opportunités junior, collaborations à long terme en agence,
@@ -294,8 +462,7 @@
                   WordPress
                 </span>
               </p>
-            </div>
-            <div class="w-100">
+              </div>
               <div class="row mb-5 justify-content-between">
                 <img
                   src="assets/icons/logo-bootstrap.svg"
@@ -318,7 +485,7 @@
                   class="img-fluid col-2 col-lg-1 profile-picture-zone"
                 />
               </div>
-              <div class="row mb-5 justify-content-between">
+              <div class="row mb-5 pb-3 justify-content-between">
                 <img
                   src="assets/icons/logo-wordpress.svg"
                   alt="Logo de Wordpress"
@@ -330,55 +497,74 @@
                   class="img-fluid col-2 col-lg-1 p-4 profile-picture-zone"
                 />
               </div>
+              <h3 class="mb-4">Expérience</h3>
+              <div class="w-100 d-flex justify-content-center">
+                <div class="w-75">
+                  <div
+                    class="border rounded-4 p-4 mb-3 bg-dark bg-opacity-50"
+                  >
+                    <div class="small mb-1">4 mai – 28 août 2026</div>
+                    <h3 class="h5 mb-1">Stagiaire développeur web</h3>
+                    <div class="mb-3">BRP Megatech</div>
+                    <p class="mb-3">
+                      Seul développeur sur le projet, j’ai produit un intranet
+                      pour les 150 employés de bureau et une version allégée
+                      pour les employés d’usine. Il est hébergé sur Azure pour
+                      les tests, mais pas encore en service. J’y retourne
+                      ponctuellement, pour finaliser l’authentification une
+                      fois l’architecture confirmée, puis l’ouvrir aux
+                      employés.
+                    </p>
+                    <p class="mb-3">
+                      WordPress n’était pas autorisé, alors j’ai fait un petit
+                      outil en JavaScript pour modifier le contenu. L’intranet
+                      affiche les campagnes Mailchimp en appelant l’API, et le
+                      menu de la cafétéria à partir de l’infolettre du
+                      traiteur, avec un bouton suivi dans Google Analytics pour
+                      mesurer l’intérêt.
+                    </p>
+                    <p class="mb-3">
+                      Il y a aussi un prototype de réservation de salles, où on
+                      choisit une salle sur un plan de la bâtisse que j’ai
+                      refait dans Figma. Il vérifie les disponibilités avec
+                      l’API de Google Agenda.
+                    </p>
+                    <p class="mb-3">
+                      J’ai tenu à documenter où en est le projet, la dette
+                      technique, les points à surveiller et mes suggestions.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span class="badge text-bg-secondary">HTML/CSS</span>
+                      <span class="badge text-bg-secondary">JavaScript</span>
+                      <span class="badge text-bg-secondary">Node.js</span>
+                      <span class="badge text-bg-secondary">Azure</span>
+                      <span class="badge text-bg-secondary"
+                        >Google Analytics</span
+                      >
+                      <span class="badge text-bg-secondary">Figma</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="mt-5 pt-5 mb-3">Travailler avec l’IA</h3>
               <p class="mb-4">
-                J’intègre l’IA à mon processus de travail comme soutien à
-                l’apprentissage et à la résolution de problèmes. Elle m’aide à
-                explorer différentes approches, à mieux comprendre certaines
-                notions et à avancer plus efficacement, tout en gardant un
-                regard critique sur la qualité du code et la logique du projet.
-                <br />Cela dit, elle ne remplace pas une équipe expérimentée qui
-                applique de bonnes pratiques, un cadre que je recherche
-                justement pour évoluer en collaborant.
+                Je travaille surtout avec Claude Code. Je choisis comment m’en
+                servir selon mon but.
+              </p>
+              <p class="mb-4">
+                Pour mes cours, la règle est simple. L’IA peut me donner des
+                explications, mais je code à la main.
               </p>
               <p class="mb-0">
-                Je souhaite progresser aux côtés de développeurs expérimentés
-                afin de consolider de bonnes pratiques et de bonnes méthodes de
-                travail.
+                Dans mes projets, plus le code touche au reste du site, plus je
+                le relis de près. C’est ce que j’ai fait pour WooCommerce et
+                mon thème sur mesure, et ça a consolidé mon PHP. Mon animation
+                est un morceau isolé, alors Claude Code l’a écrite. J’ai pris toutes
+                les décisions et vérifié que ça n’affectait ni le chargement ni
+                l’expérience sur le reste du site. J’ai aussi ajusté l’effort
+                selon la tâche et gardé le contexte court, pour éviter de
+                brûler mes limites d’utilisation inutilement.
               </p>
-              <div
-                class="row gap-4 mt-5 justify-content-center text-center mb-4"
-              >
-                <a
-                  href="assets/pdf/CV-Aldérick-Gauthier.pdf"
-                  target="_blank"
-                  class="btn btn-primary"
-                  >Télécharger mon CV</a
-                >
-              </div>
-              <div
-                class="d-flex align-items-center justify-content-center py-4 contact-email-row"
-              >
-                <span class="user-select-all fs-4">contact@agauthier.ca</span>
-                <button
-                  type="button"
-                  class="btn d-inline-flex align-items-center justify-content-center bg-transparent bi bi-copy mx-1"
-                  data-copy="contact@agauthier.ca"
-                  aria-label="Copier l’adresse courriel"
-                  title="Copier"
-                ></button>
-                <span
-                  data-feedback
-                  class="small text-success fs-6 fw-bold"
-                ></span>
-              </div>
-              <div class="text-center pb-4">
-                <a
-                  href="https://github.com/alderick44"
-                  target="_blank"
-                  class="link-info d-block"
-                  >Profil GitHub</a
-                >
-              </div>
               <h3 class="my-5 py-5 mb-2 pb-2">Formation</h3>
               <p class="mb-4">
                 Un cheminement qui m’a permis de développer à la fois ma
@@ -436,10 +622,44 @@
                   </div>
                 </div>
               </div>
+              <div
+                class="row gap-4 mt-5 justify-content-center text-center mb-4"
+              >
+                <a
+                  href="assets/pdf/CV-Aldérick-Gauthier.pdf"
+                  target="_blank"
+                  class="btn btn-primary"
+                  >Télécharger mon CV</a
+                >
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-center py-4 contact-email-row"
+              >
+                <span class="user-select-all fs-4">contact@agauthier.ca</span>
+                <button
+                  type="button"
+                  class="btn d-inline-flex align-items-center justify-content-center bg-transparent bi bi-copy mx-1"
+                  data-copy="contact@agauthier.ca"
+                  aria-label="Copier l’adresse courriel"
+                  title="Copier"
+                ></button>
+                <span
+                  data-feedback
+                  class="small text-success fs-6 fw-bold"
+                ></span>
+              </div>
+              <div class="text-center pb-4">
+                <a
+                  href="https://github.com/alderick44"
+                  target="_blank"
+                  class="link-info d-block"
+                  >Profil GitHub</a
+                >
+              </div>
             </div>
           </div>
         </section>
-        <section class="collapse w-100" id="entrepreneur">
+        <section class="collapse w-100" id="entrepreneur" role="tabpanel" aria-labelledby="tab-entrepreneur">
           <div
             class="w-100 d-flex justify-content-center align-items-center flex-column py-5 border-top border-1"
           >
@@ -511,9 +731,9 @@
               <div data-sentinel></div>
               <div class="d-flex justify-content-center mt-4">
                 <a
-                  href="mailto:contact@agauthier.ca?subject=Prise%20de%20contact"
+                  href="mailto:contact@agauthier.ca?subject=Projet%20de%20site%20web"
                   class="btn btn-primary"
-                  >Me contacter</a
+                  >Parler de votre site</a
                 >
               </div>
               <div
@@ -542,20 +762,13 @@
             >
               <h2 class="my-5 text-start">À propos</h2>
               <p class="mb-4">
-                Animé par les projets concrets, j’ai développé une forte
-                autonomie dans mon travail et une bonne capacité d'adaptation en
-                menant des projets entrepreneuriaux. J’aime apprendre et
-                résoudre des problèmes.
-              </p>
-              <p class="mb-4">
                 Je suis un amoureux de la nature, ce qui m'a motivé à démarrer
-                mon projet de culture de champignons Sporacultus. Je rêve de
-                faire évoluer ce projet vers quelque chose qui permettra de
-                développer des méthodes de culture écologiques, performantes et
-                innovantes, avec une approche technologique.
+                Sporacultus, mon projet de culture de champignons. Je rêve d'y développer des méthodes de
+                culture écologiques, avec une approche technologique.
               </p>
             </div>
-            <div class="d-flex justify-content-start">
+            <!-- data-only : la Formation est déjà dans le panneau recruteur, ce bloc ne sert qu'en mode entrepreneur -->
+            <div data-only="entrepreneur" class="d-flex justify-content-start">
               <div class="w-100 mt-5">
                 <div class="d-flex justify-content-center mb-5">
                   <button
@@ -568,7 +781,7 @@
                 </div>
               </div>
             </div>
-            <div class="collapse w-100" id="formation">
+            <div data-only="entrepreneur" class="collapse w-100" id="formation">
               <div class="w-100 d-flex justify-content-center">
                 <div class="w-75">
                   <div
@@ -618,11 +831,18 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-center mt-5 mb-4">
+            <div class="pour-swap justify-content-center mt-5 mb-4">
               <a
-                href="mailto:contact@agauthier.ca?subject=Prise%20de%20contact"
+                data-pour="recruteur"
+                href="mailto:contact@agauthier.ca?subject=Opportunit%C3%A9%20de%20travail"
                 class="btn btn-primary"
                 >Me contacter</a
+              >
+              <a
+                data-pour="entrepreneur"
+                href="mailto:contact@agauthier.ca?subject=Projet%20de%20site%20web"
+                class="btn btn-primary"
+                >Parler de votre site</a
               >
             </div>
             <div
@@ -649,7 +869,7 @@
       id="realisations-sticky"
       href="#realisations-spora"
       class="btn btn-primary realisations-sticky"
-      >Voir Réalisations</a
+      >Voir Réalisations ↓</a
     >
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -657,8 +877,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="assets/js/Gradient.js"></script>
-    <script src="assets/js/nav-compact.js"></script>
+    <script src="assets/js/mode.js"></script>
+    <script src="assets/js/pill-switch.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/cursor-label.js"></script>
     <script type="module" src="assets/js/pdf-viewer.js"></script>
     <script>
       var gradient = new Gradient({
@@ -669,6 +891,22 @@
         static: false,
       });
       gradient.initGradient("#gradient-canvas");
+
+      // Le navigateur peut libérer le contexte WebGL après une longue inactivité
+      const gradientCanvas = document.getElementById("gradient-canvas");
+      gradientCanvas.addEventListener("webglcontextlost", (e) =>
+        e.preventDefault(),
+      );
+      gradientCanvas.addEventListener("webglcontextrestored", () => {
+        gradient = new Gradient({
+          amplitude: 100,
+          height: 500,
+          scaleX: 1.2,
+          scaleY: 1.7,
+          static: false,
+        });
+        gradient.initGradient("#gradient-canvas");
+      });
     </script>
   </body>
 </html>
