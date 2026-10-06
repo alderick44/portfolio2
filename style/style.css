@@ -370,6 +370,24 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
+/* Cartes d'expérience, formation, etc. : 75 % de large sur grand écran, pleine largeur sur petit */
+.cards-wrap {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .cards-wrap {
+    width: 75%;
+  }
+}
+@media (max-width: 575.98px) {
+  /* Rapproche le contenu des bords pour que les cartes soient moins étroites */
+  .container {
+    --bs-gutter-x: 1rem;
+  }
+  .cards-wrap > .border {
+    padding: 1rem !important; /* bat p-4 */
+  }
+}
   transition:
     opacity 0.22s ease,
     transform 0.22s ease;
