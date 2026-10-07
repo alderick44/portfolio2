@@ -160,7 +160,8 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
 .pill-switch-question {
   font-size: 1rem;
   opacity: 0.75;
-  margin-bottom: 1.25rem;
+  margin-top: 3.5rem;
+  margin-bottom: 0.75rem;
 }
 /* Garde la place de la pilule dans le hero quand elle est épinglée en haut */
 .pill-switch-anchor {
