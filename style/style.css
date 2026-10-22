@@ -138,6 +138,10 @@ button {
 }
 .pour-swap > [data-pour] {
   grid-area: 1 / 1;
+  /* Fondu croisé : la visibilité suit l'opacité, donc l'ancien texte s'efface pendant que le nouveau apparaît */
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s;
 }
 /* Contenu affiché dans un seul mode (l'autre mode ne laisse aucune trace dans la page) */
 html[data-mode="recruteur"] [data-only="entrepreneur"],
@@ -155,6 +159,7 @@ html[data-mode="entrepreneur"] [data-only="recruteur"] {
 html[data-mode="recruteur"] .pour-swap > [data-pour="entrepreneur"],
 html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
   visibility: hidden;
+  opacity: 0;
 }
 /*------------------------ */
 .pill-switch-question {
@@ -431,6 +436,7 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
   }
   .pill-switch__thumb,
   .pill-switch-hint,
+  .pour-swap > [data-pour],
   .realisations-sticky {
     transition: none;
   }

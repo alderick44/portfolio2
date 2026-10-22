@@ -46,9 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
     hintTimeout = setTimeout(hideHint, delay);
   }
 
-  function setState(target, { scroll = true } = {}) {
+  function setState(target, { scroll = true, pulse = true } = {}) {
     sw.dataset.state = target;
     siteMode.set(target);
+
+    /* Petite pulsation des textes qui changent, en plus du fondu (style.css) */
+    if (pulse && !reducedMotion.matches) {
+      document.querySelectorAll(`.pour-swap > [data-pour="${target}"]`).forEach((el) => {
+        el.animate(
+          [{ transform: "scale(1)" }, { transform: "scale(1.03)" }, { transform: "scale(1)" }],
+          { duration: 400, easing: "ease" }
+        );
+      });
+    }
 
     btns.forEach((b) => {
       const on = b.dataset.target === target;
@@ -106,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setState(hint.getAttribute("href").slice(1));
   });
 
-  setState(siteMode.get(), { scroll: false });
+  setState(siteMode.get(), { scroll: false, pulse: false });
 });
 
 //----- Taille compacte selon les sections visibles -----
