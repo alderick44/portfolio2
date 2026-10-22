@@ -438,3 +438,14 @@ html[data-mode="entrepreneur"] .pour-swap > [data-pour="recruteur"] {
     animation: none;
   }
 }
+
+/* Badge du lien Sporacultus sur la vidéo : réagit comme un lien */
+.video-link {
+  transition: background-color 0.15s, color 0.15s, transform 0.15s;
+}
+.video-link:hover,
+.video-link:focus-visible {
+  background-color: #fff !important;
+  color: #9a2c19 !important;
+  transform: translateY(-2px);
+}
